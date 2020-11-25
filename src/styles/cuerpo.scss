@@ -1,0 +1,28 @@
+.wrap{
+    border: 2px dotted black;
+    padding: 10px;
+
+    h3{
+        color: red;
+    }
+
+    .contenedor{
+        border: 2px dotted blue;
+        padding: 10px;
+        display: flex;
+
+        &__izquierda{
+            padding: 10px;
+            width: 50%;
+            border: 2px dotted rgb(24, 255, 24);
+        }
+
+        &__derecha{
+            padding: 10px;
+            width: 50%;
+            border: 2px dotted yellow;
+        }
+    
+    }
+
+}

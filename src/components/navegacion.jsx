@@ -1,5 +1,6 @@
 import React from 'react';
 import imagen from '../imagenes/web-hook.svg';
+import '../styles/navegacion.scss';
 
 const Navegacion = () => (
     <div className="navegacion">

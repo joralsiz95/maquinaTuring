@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
+import '../library/vis';
 
 const Diagramas = () => {
     return(
         <Fragment>
-            <h4>Aqui va el grafo</h4>
+            <div className="wrapper__grafo">
+                <div id="red"></div>
+            </div>
             <h4>Aqui va la cadena</h4>
         </Fragment>
     );

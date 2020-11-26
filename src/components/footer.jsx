@@ -1,10 +1,9 @@
 import React from 'react';
-import '../styles/footer.scss';
 
 const Footer = () => (
     <div className="footer">
         <div className="footer__left">
-            <h2> <span className="span_2">T</span>aller <span className="span_2">m</span>áquina de <span className="span_2">t</span>uring</h2>
+            <h2> <span className="span_2">T</span>aller <span className="span_2">m</span>áquina de <span className="span_2">T</span>uring</h2>
             <p>Objetivo: Implementar el modelo de Turing para transformar una cadena de combinaciones "a" y "b" en solo "a".</p>
             <p>Misión: Construir un programa escrito en JavaScript utilice el automata universal, para resolver el problema establecido.</p>
             <p>Compiladores</p>

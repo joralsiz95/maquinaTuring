@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
 
+$principal: rgb(255, 42, 113);
+$segundario: #191c22;
+
 body{
     font-family: 'Josefin Sans', sans-serif;
     background-color: rgb(240, 240, 240);
@@ -12,7 +15,9 @@ span{
 }
 
 .span_2{
-    color: #FF0C65;
+    color: $principal;
 }
 
-// @import 'navegacion'
+@import 'navegacion';
+@import 'cuerpo';
+@import 'footer';

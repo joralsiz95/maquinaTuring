@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/cuerpo.scss'
 import Diagramas from '../components/diagramas';
 import Settings from '../components/settings';
 

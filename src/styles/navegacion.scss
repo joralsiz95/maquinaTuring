@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
     height:80px;
-    background-color: rgb(255, 42, 113);
+    background-color: $principal;
     // background-image: linear-gradient(to right, #ff4a89, #ff4592, #ff409c, #ff3ca7, #ff3ab2, #ff3bb8, #ff3cbe, #ff3ec4, #ff42c5, #ff45c6, #ff49c7, #ff4cc8);
-
+    color: $segundario;
     box-shadow: 0px 3px 5px 0px #252a34;
 
     &__izquierda{
@@ -25,7 +25,7 @@
 
         h2{
             font-size: 1.4rem;
-            border-bottom: 2px dotted black;
+            border-bottom: 2px dotted $segundario;
         }
 
     }

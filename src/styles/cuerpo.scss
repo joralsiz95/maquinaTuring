@@ -1,26 +1,30 @@
 .wrap{
-    border: 2px dotted black;
+    // border: 2px dotted black;
     padding: 10px;
 
-    h3{
-        color: red;
-    }
-
     .contenedor{
-        border: 2px dotted blue;
+        // border: 2px dotted blue;
         padding: 10px;
         display: flex;
 
         &__izquierda{
             padding: 10px;
             width: 50%;
-            border: 2px dotted rgb(24, 255, 24);
+            // border: 2px dotted rgb(24, 255, 24);
+        
+            h3{
+                text-align: center;
+                font-size: 1.3rem;
+                margin: 10px 0 15px 0;
+                text-transform: uppercase;;
+            }
+
         }
 
         &__derecha{
             padding: 10px;
             width: 50%;
-            border: 2px dotted yellow;
+            // border: 2px dotted yellow;
         }
     
     }

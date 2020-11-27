@@ -1,6 +1,69 @@
-#red {
-    width: 600px;
-    height: 400px;
-    border: 1px dotted teal;
-    margin: 10vh auto 0 auto; 
+.wrapper__grafo{
+    // background-color: transparent;
+    // border: 2px solid rgb(163, 163, 163);
+    border-radius: 5px;
+
+    #red{
+        background-color: white;
+        border: 1px solid rgb(163, 163, 163);
+        width: 99%;
+        margin: 0 auto;
+        height: 400px;
+        box-shadow: 0px 5px 5px -2px $segundario;
+        border-radius: 3px;
+        border-top: 4px solid $principal;
+    }
+
+}
+
+.glide{
+    // border: 1px solid blue;
+    cursor: auto;
+    .glide__track{
+        border: 1px solid rgb(163, 163, 163);
+        margin: 10px 0;
+        padding: 0;
+        height: 110px;
+        // width: 100%;
+        box-shadow: 0px 5px 5px -2px $segundario;
+        border-radius: 5px;
+        border-top: 4px solid $principal;
+
+        .glide__slide{
+            border: 1.8px solid $segundario;
+            height: 50px;    
+            // width: 50px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+            font-size: 1.5rem;
+
+            &.glide__slide--active{
+                background-color: $principal;
+                box-shadow: 0px 5px 10px 5px $segundario;
+                transform: scale(1.05);
+                transition: .1s ease;
+            }
+        }
+
+        .señalador{
+            text-align: center;
+            height: 0;
+            margin: 0 auto;
+
+            img{
+                position: relative;
+                top: -20px;
+            }
+
+        }
+
+    }
+
+    .btns{
+        display: none;
+    }
+
 }

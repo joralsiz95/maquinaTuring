@@ -2,12 +2,12 @@ import React from 'react';
 import Diagramas from '../components/diagramas';
 import Settings from '../components/settings';
 
-const Cuerpo = () => {
+const Cuerpo = () => {    
     return(
         <div className="wrap">
-            <h3>Titulo del cuerpo</h3>
             <div className="contenedor">
                 <div className="contenedor__izquierda">
+                    <h3>Representación gráfica de estados y transiciones</h3>
                     <Diagramas/>
                 </div>
                 <div className="contenedor__derecha">

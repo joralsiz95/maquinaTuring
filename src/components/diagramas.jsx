@@ -11,12 +11,15 @@ const Diagramas = () => {
     useEffect(()=>{
 
       var glide = new Glide('.glide',{
-        type: "carousel",
+        type: "slider",
         startAt: 15,
         perView: 11,
         focusAt: "center",
-        gap: -1,
-        animationDuration: 100
+        gap: 5,
+        // animationTimingFunc: "bounce",
+        animationDuration: 0,
+        peek: 20,
+        keyboard: false
       })
       // glide.disable(); //suspende interaccion
       glide.mount();
@@ -129,40 +132,40 @@ const Diagramas = () => {
             </div> 
 
             {/* Contenedor de la cinta */}
-            <div class="glide">
-                <div class="glide__track" data-glide-el="track">
-                    <ul class="glide__slides">
-                        <li class="glide__slide">0</li>
-                        <li class="glide__slide">1</li>
-                        <li class="glide__slide">2</li>
-                        <li class="glide__slide">3</li>
-                        <li class="glide__slide">4</li>
-                        <li class="glide__slide">5</li>
-                        <li class="glide__slide">6</li>
-                        <li class="glide__slide">7</li>
-                        <li class="glide__slide">8</li>
-                        <li class="glide__slide">9</li>
-                        <li class="glide__slide">10</li>
-                        <li class="glide__slide">11</li>
-                        <li class="glide__slide">12</li>
-                        <li class="glide__slide">13</li>
-                        <li class="glide__slide">14</li>
-                        <li class="glide__slide">15</li>
-                        <li class="glide__slide">16</li>
-                        <li class="glide__slide">17</li>
-                        <li class="glide__slide">18</li>
-                        <li class="glide__slide">19</li>
-                        <li class="glide__slide">20</li>
-                        <li class="glide__slide">21</li>
-                        <li class="glide__slide">22</li>
-                        <li class="glide__slide">23</li>
-                        <li class="glide__slide">24</li>
-                        <li class="glide__slide">25</li>
-                        <li class="glide__slide">26</li>
-                        <li class="glide__slide">27</li>
-                        <li class="glide__slide">28</li>
-                        <li class="glide__slide">29</li>
-                        <li class="glide__slide">30</li>
+            <div className="glide">
+                <div className="glide__track" data-glide-el="track">
+                    <ul className="glide__slides">
+                        <li className="glide__slide">0</li>
+                        <li className="glide__slide">1</li>
+                        <li className="glide__slide">2</li>
+                        <li className="glide__slide">3</li>
+                        <li className="glide__slide">4</li>
+                        <li className="glide__slide">5</li>
+                        <li className="glide__slide">6</li>
+                        <li className="glide__slide">7</li>
+                        <li className="glide__slide">8</li>
+                        <li className="glide__slide">9</li>
+                        <li className="glide__slide">10</li>
+                        <li className="glide__slide">11</li>
+                        <li className="glide__slide">12</li>
+                        <li className="glide__slide">13</li>
+                        <li className="glide__slide">14</li>
+                        <li className="glide__slide">15</li>
+                        <li className="glide__slide">16</li>
+                        <li className="glide__slide">17</li>
+                        <li className="glide__slide">18</li>
+                        <li className="glide__slide">19</li>
+                        <li className="glide__slide">20</li>
+                        <li className="glide__slide">21</li>
+                        <li className="glide__slide">22</li>
+                        <li className="glide__slide">23</li>
+                        <li className="glide__slide">24</li>
+                        <li className="glide__slide">25</li>
+                        <li className="glide__slide">26</li>
+                        <li className="glide__slide">27</li>
+                        <li className="glide__slide">28</li>
+                        <li className="glide__slide">29</li>
+                        <li className="glide__slide">30</li>
                     </ul>
                     <div className="señalador">
                     <img src="https://img.icons8.com/fluent/48/000000/sort-up.png"/>

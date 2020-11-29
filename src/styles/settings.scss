@@ -4,9 +4,59 @@
     border-radius: 5px;
     margin: 30px 0;
     padding: 20px;
-    width: 80%;
+    width: 85%;
     margin: 20px auto;
     box-shadow: -4px 3px 5px 0px $principal;
+}
+
+@mixin botones {
+    display: flex;
+    text-decoration: none;
+    // border: 1px solid teal;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    margin: 0 10px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 5px -1px rgba(0,0,0,0.75);
+    cursor: pointer;            
+
+    p{
+        font-size: .8rem;
+        margin: 0;
+        font-weight: bold;
+        transition: .2s ease;
+        // text-align: left;
+    }
+    
+    img{
+        position: relative;
+        top: -2px;
+        left: 3px;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+@mixin botonDesactivado {
+    &.desactivado{
+        cursor: no-drop;
+        background-color: rgb(180, 180, 180);
+        color: rgb(12, 12, 12);
+        
+        &:hover{
+            transform: scale(1);
+            transition: .2s ease;
+        }
+        
+        &:active{
+            background-color: rgb(180, 180, 180);
+            color: rgb(12, 12, 12);
+            transform: scale(1);
+            transition: .2s ease;
+        }
+    
+    }
 }
 
 form{
@@ -14,15 +64,18 @@ form{
     border: 1px solid rgb(163, 163, 163);
     box-shadow: 0px 5px 5px -2px $segundario;
     border-radius: 5px;
-    height: 83%;
+    height: 89%;
     width: 70%;
     margin: 0 auto;
     border-top: 4px solid $principal;
-    padding: 50px;
+    padding: 30px 50px;
 
-    h3{
-        font-size: 2rem;
+    p{
+        font-size: 1.3rem;
         margin-top: 0;
+        font-weight: bold;
+        color: $segundario;
+        text-transform: uppercase;
         text-align: center;
     }
 
@@ -33,9 +86,12 @@ form{
         .label-cadena{
             display: block;
             padding: 10px;
-            font-size: 1.1rem;
-            width: 100%;
+            font-size: .9rem;
+            width: 95%;
+            font-weight: bold;
+            text-transform: uppercase;
             text-align: center;
+            margin: 0 auto;
         }
 
         input[type=text]{
@@ -47,14 +103,23 @@ form{
             border-radius: 5px;
             width: 94%;
             font-family: 'Josefin Sans', sans-serif;
+        
+            &.bien{
+                border: 3px solid rgb(46, 243, 46);
+            }
+
+            &.mal{
+                border: 3px solid red;
+            }
+
         }
 
         p{
             padding: 10px;
-            font-size: 1.1rem;
-            width: 100%;
+            font-size: .9rem;
+            width: 95%;
             text-align: center;
-            margin: 0;
+            margin: 0 auto;
         }
 
         //aqui estan los estilos de la palanca
@@ -65,10 +130,12 @@ form{
                 display: block;
                 width: 4rem;
                 height: 2rem;
-                background-color: red;
+                background-color: white;
                 margin: 0 auto;
                 border-radius: 1rem;
                 transition: .3s ease;
+                // box-shadow: -3px 3px 2px 0px rgba(0,0,0,0.75);
+                box-shadow: inset 0 0 20px $principal;
 
                 &:before{
                     display: flex;
@@ -80,75 +147,203 @@ form{
                     width: 2rem;
                     height: 2rem;
                     border-radius: 50%;
-                    background-color: blue;
+                    background-color: $principal;
                     position: relative;
                     transition: .3s ease;
                     left: 0;
                 }
 
+                // &.desactivado{
+                //     background-color: white;
+                //     box-shadow: inset 0 0 20px rgb(163, 163, 163);
+                //     cursor: no-drop;
+
+                //     &:before{
+                //         content: "";
+                //         background-color: gray;
+                //         left: 0;
+                //     }
+                
+                // }
+
             }
             &:checked{
                 + label{
-                    background-color: green;
+                    background-color: white;
+                    box-shadow: inset 0 0 20px rgb(31, 165, 255);
 
                     &:before{
                         content: "Si";
                         left: 2rem;
-                        background-color: yellow;
+                        background-color: rgb(31, 165, 255);
                     }
 
                 }
+
+                // &.desactivado{
+                //     left: 0;
+                //     content: "No";
+                // }
+
             }
-        
+            
         }
 
-    }
-
-
-    .pack-botones-pasos{
-        @include stylesCommons();
     }
 
     .pack-botones-sin_pasos{
         @include stylesCommons();
 
+        .titulo__slider{
+            font-size: .9rem;
+            margin: 0;
+        }
+
+        //el slider de velocidad
         .contenedor_deslizable{
             /* background-color: white; */
-            width: 50%;
+            width: 85%;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 20px auto;
-          }
-    
-          .deslizante{
-            margin: 0 30px;
-            width: 300px;
-            height: 15px;
-            -webkit-appearance: none;
-            outline: none;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: inset 0 0 5px rgb(31, 165, 255);
-          }
-    
-          .deslizante::-webkit-slider-thumb{
-            -webkit-appearance: none;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color:  rgb(31, 165, 255);
-            cursor: pointer;
-            border: 3px solid black;
-            box-shadow: -407px 0 0 400px  rgb(31, 165, 255);
-          }
-    
-          h2{
-            text-align: center;
-            margin: 0;
-          }
-    
+        
+            .deslizante{
+                margin: 0 30px;
+                width: 300px;
+                height: 15px;
+                -webkit-appearance: none;
+                outline: none;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: inset 0 0 5px rgb(31, 165, 255);
+            
+                &::-webkit-slider-thumb{
+                    -webkit-appearance: none;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color:  rgb(31, 165, 255);
+                    cursor: pointer;
+                    border: 3px solid black;
+                    box-shadow: -407px 0 0 400px  rgb(31, 165, 255);
+                }
+            
+            }
+            
+            p{
+                font-size: 1.3rem;
+                text-align: center;
+                margin: 0;
+            }
+
+        }
+
+        .contenedor__botones{
+            // border: 1px solid firebrick;
+            height: 60px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            a{
+                @include botones();
+
+                &.iniciar{
+                    background-color: rgb(47, 241, 47);
+                
+                    &:hover{
+                        transform: scale(1.03);
+                        transition: .2s ease;
+                    }
+                    
+                    &:active{
+                        background-color: rgb(10, 80, 10);
+                        color: white;
+                        transform: scale(1);
+                        transition: .2s ease;
+                    }
+
+                }
+
+                &.pausar{
+                    background-color: yellow;
+                
+                    &:hover{
+                        transform: scale(1.03);
+                        transition: .2s ease;
+                    }
+                    
+                    &:active{
+                        background-color: rgb(126, 126, 10);
+                        color: white;
+                        transform: scale(1);
+                        transition: .2s ease;
+                    }
+                
+                }
+
+                &.reiniciar{
+                    background-color: red;
+                
+                    &:hover{
+                        transform: scale(1.03);
+                        transition: .2s ease;
+                    }
+                    
+                    &:active{
+                        background-color: rgb(94, 15, 15);
+                        color: white;
+                        transform: scale(1);
+                        transition: .2s ease;
+                    }
+                
+                }
+                
+                @include botonDesactivado();
+            
+            }
+
+
+        }
+
+    }
+
+    .pack-botones-pasos{
+        @include stylesCommons();
+
+        p{
+            font-size: 1rem;
+            margin: 20px 0;
+        }       
+
+        a{
+            @include botones();
+            margin: 20px 0;
+
+            &.siguiente{
+                background-color: rgb(255, 144, 40);
+            
+                &:hover{
+                    transform: scale(1.03);
+                    transition: .2s ease;
+                }
+                
+                &:active{
+                    background-color: rgb(105, 66, 7);
+                    color: white;
+                    transform: scale(1);
+                    transition: .2s ease;
+                }
+
+            }
+
+            @include botonDesactivado();
+        
+        }       
 
     }
 

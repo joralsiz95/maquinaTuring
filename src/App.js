@@ -1,15 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Navegacion from './components/navegacion';
 import Footer from './components/footer';
 import Cuerpo from './components/cuerpo';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 function App() {
     return (
-      <Fragment>
-        <Navegacion/>
-        <Cuerpo/>
-        <Footer/>
-      </Fragment>
+        <Provider store={store} >
+          <main>
+            <Navegacion/>
+            <Cuerpo/>
+            <Footer/>
+          </main>
+        </Provider>
     );
 }
 

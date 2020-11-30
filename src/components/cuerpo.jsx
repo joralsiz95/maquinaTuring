@@ -2,7 +2,8 @@ import React from 'react';
 import Diagramas from '../components/diagramas';
 import Settings from '../components/settings';
 
-const Cuerpo = () => {    
+const Cuerpo = () => {  
+
     return(
         <div className="wrap">
             <div className="contenedor">

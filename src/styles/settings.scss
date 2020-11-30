@@ -19,8 +19,8 @@
     margin: 0 10px;
     border-radius: 20px;
     box-shadow: 0px 4px 5px -1px rgba(0,0,0,0.75);
-    cursor: pointer;            
-
+    cursor: pointer;        
+    z-index: 100;
     p{
         font-size: .8rem;
         margin: 0;
@@ -266,24 +266,24 @@ form{
 
             @include botonDesactivado();            
 
-            &.cargada{
-                cursor: no-drop;
-                background-color: rgb(107, 221, 113);
-                color: rgb(255, 255, 255);
-                transition: .3s ease all;
+            // &.cargada{
+            //     cursor: no-drop;
+            //     background-color: rgb(107, 221, 113);
+            //     color: rgb(255, 255, 255);
+            //     transition: .3s ease all;
 
-                &:hover{
-                    transform: scale(1);
-                    transition: .2s ease;
-                }
+            //     &:hover{
+            //         transform: scale(1);
+            //         transition: .2s ease;
+            //     }
                 
-                &:active{
-                    background-color: rgb(107, 221, 113);
-                    color: rgb(255, 255, 255);
-                    transform: scale(1);
-                    transition: .2s ease;
-                }
-            }
+            //     &:active{
+            //         background-color: rgb(107, 221, 113);
+            //         color: rgb(255, 255, 255);
+            //         transform: scale(1);
+            //         transition: .2s ease;
+            //     }
+            // }
 
         }
 

@@ -1,11 +1,14 @@
 import React, { Fragment, useRef, useEffect } from 'react';
 import { crearRed, red } from '../library/vis';
+import { connect } from 'react-redux';
 
 import Glide from '@glidejs/glide';
 
-const Diagramas = () => {
+const Diagramas = ({ cadenaMontar }) => {
     
     const contenedor_grafo = useRef(null);
+    //vector base
+    var vector = []; for (let i = 0; i < 40; i++) vector.push("x");
 
     //ejemplo de la cinta
     useEffect(()=>{
@@ -19,25 +22,25 @@ const Diagramas = () => {
         // animationTimingFunc: "bounce",
         animationDuration: 100,
         peek: 20,
-        keyboard: false
+        // keyboard: false
       })
       // glide.disable(); //suspende interaccion
       glide.mount();
 
-      var x = 0;
-      var idInterval = setInterval(()=>{
-        if(x < 3){
-          document.getElementById("btn__next").click();
-          x++;
-        }
-        else if(x >= 3 && x <= 6){
-          document.getElementById("btn__prev").click();
-          x++
-        }
-        else{
-          clearInterval(idInterval);
-        }
-      },1000);
+      // var x = 0;
+      // var idInterval = setInterval(()=>{
+      //   if(x < 3){
+      //     document.getElementById("btn__next").click();
+      //     x++;
+      //   }
+      //   else if(x >= 3 && x <= 6){
+      //     document.getElementById("btn__prev").click();
+      //     x++
+      //   }
+      //   else{
+      //     clearInterval(idInterval);
+      //   }
+      // },1000);
 
     },[])
 
@@ -66,13 +69,30 @@ const Diagramas = () => {
       
     },[])
 
+    useEffect(()=>{
+      console.log("Actualizo cadena en la cinta");
+
+    },[cadenaMontar])
+
     const mostrarElementosEnLaCinta = () => { 
-      var vector = [];
-      for (let i = 0; i < 40; i++) vector.push("x");
-      
-      return vector.map((elem,i)=>(
-        <li className="glide__slide" key={i} ></li>
-      ));
+
+      if(cadenaMontar.length === 0){
+        return vector.map((elem,i)=>(
+          <li className="glide__slide" key={i} ></li>
+        ));
+      }
+      else{
+        var aux = 9;
+        return vector.map((elem,i)=>{
+          if(i === 9){
+            return <li className="glide__slide" key={i} >{cadenaMontar[0]}</li>
+          }
+          if(i>=10 && i <= 10+(cadenaMontar.length-2)) {
+            return <li className="glide__slide" key={i} >{cadenaMontar[i-aux]}</li>
+          }
+          else return <li className="glide__slide" key={i} ></li>
+        }); 
+      }
       
     }
 
@@ -82,7 +102,7 @@ const Diagramas = () => {
             <div className="wrapper__grafo">
                 <div id="red" ref={contenedor_grafo}></div>
             </div> 
-
+            
             {/* Contenedor de la cinta */}
             <div className="glide">
                 <h3>Representación de la cinta</h3>
@@ -93,7 +113,8 @@ const Diagramas = () => {
                         }
                     </ul>
                     <div className="señalador">
-                    <img src="https://img.icons8.com/fluent/48/000000/sort-up.png"/>
+                    {/* <img src="https://img.icons8.com/fluent/48/000000/sort-up.png"/> */}
+                      <p>Una vez cargues la maquina, aparecera la cadena en esta cinta ...!</p>
                     </div>
                 </div>
                 <div data-glide-el="controls">
@@ -105,7 +126,13 @@ const Diagramas = () => {
     );
 }
 
-export default Diagramas;
+const mapStateToProps = state => ({
+  cadenaMontar: state.cadenaAMontar
+})
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Diagramas);
 
 
 

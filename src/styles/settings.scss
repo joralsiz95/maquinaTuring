@@ -94,22 +94,76 @@ form{
             margin: 0 auto;
         }
 
-        input[type=text]{
-            display: block;
-            padding: 10px;
-            font-size: 1.3rem;
-            outline: none;
-            border: 0;
-            border-radius: 5px;
-            width: 94%;
-            font-family: 'Josefin Sans', sans-serif;
-        
-            &.bien{
-                border: 3px solid rgb(46, 243, 46);
+        .input{
+            display: flex;
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px;
+
+            input[type=text]{
+                display: block;
+                width: 100%;
+                padding: 10px;
+                font-size: 1.3rem;
+                outline: none;
+                border: 0;
+                border-radius: 5px;
+                font-family: 'Josefin Sans', sans-serif;
+                border: 3px solid transparent;
+                transition: .3s ease all;
+
+                &:focus{
+                    border: 3px solid rgb(84, 144, 255);
+                    box-shadow: 3px 0px 10px  rgba($color: #000000, $alpha: 0.5);
+                }
+    
             }
 
-            &.mal{
+            i{
+                position: absolute;
+                font-size: 1.2rem;
+                top: 13px;
+                right: 16px;
+                opacity: 0;    
+            }
+            
+            .sms{
+                position: absolute;
+                top: 60px;
+                font-size: .6rem;
+                margin: 0;
+                padding: 0;
+                display: none;
+            }
+
+            &.bien input[type=text]{
+                border: 3px solid rgb(46, 243, 46);
+                transition: .3s ease all;
+            }
+
+            &.bien i{
+                color: rgb(68, 255, 68);
+                opacity: 1;
+            }
+
+            &.bien .sms{
+                color: rgb(64, 212, 64);
+                display: block;
+            }
+
+            &.mal input[type=text]{
                 border: 3px solid red;
+                transition: .3s ease all;            
+            }
+
+            &.mal i{
+                color: red;
+                opacity: 1;
+            }
+
+            &.mal .sms{
+                color: red;
+                display: block;
             }
 
         }
@@ -317,7 +371,7 @@ form{
 
         p{
             font-size: 1rem;
-            margin: 20px 0;
+            margin: 24px 0;
         }       
 
         a{

@@ -5,48 +5,60 @@ const Settings = () => {
     const [ cadena, setCadena ] = useState('');
     const [ pasos, setPasos ] = useState(false);
     const [ velocidad, setVelocidad ] = useState(50);
+    const [ sms, setSms ] = useState('');
 
     const regex = /^[0-9]{5}$/;
     // console.log(regex.test("123"));
     // console.log(regex.test("1234"));
 
     useEffect(()=>{
-
+        console.log("entro en el effect de toggle");
         if(!pasos){
-            if(regex.test(document.getElementById("cadena").value)){
+            if(regex.test(document.getElementById("entrada").value)){
                 document.getElementById("cadena").classList.add("bien");
                 document.getElementById("cadena").classList.remove("mal");
+                document.getElementById("icono").classList.add("fa-check-circle");
+                document.getElementById("icono").classList.remove("fa-times-circle");
                 
                 document.getElementById("iniciar").classList.remove("desactivado");
                 document.getElementById("pausar").classList.remove("desactivado");
                 document.getElementById("reiniciar").classList.remove("desactivado");
                 // document.getElementById("toggleState").classList.remove("desactivado");
-                
-                setCadena(document.getElementById("cadena").value);
+                setSms("OK Puedo trabajar con esta cadena");
+                setCadena(document.getElementById("entrada").value);
             }
             else{
                 document.getElementById("cadena").classList.add("mal");
                 document.getElementById("cadena").classList.remove("bien");
+                document.getElementById("icono").classList.remove("fa-check-circle");
+                document.getElementById("icono").classList.add("fa-times-circle");
 
                 document.getElementById("iniciar").classList.add("desactivado");
                 document.getElementById("pausar").classList.add("desactivado");
                 document.getElementById("reiniciar").classList.add("desactivado");
                 // document.getElementById("toggleState").classList.add("desactivado");
+                setSms("Esta cadena no es correcta...!");
             }
         }
         else{
-            if(regex.test(document.getElementById("cadena").value)){
+            if(regex.test(document.getElementById("entrada").value)){
                 document.getElementById("cadena").classList.add("bien");
                 document.getElementById("cadena").classList.remove("mal");
+                document.getElementById("icono").classList.add("fa-check-circle");
+                document.getElementById("icono").classList.remove("fa-times-circle");
 
                 document.getElementById("siguiente").classList.remove("desactivado");
-                setCadena(document.getElementById("cadena").value);
+                setSms("OK Puedo trabajar con esta cadena");
+                setCadena(document.getElementById("entrada").value);
             }
             else{
                 document.getElementById("cadena").classList.add("mal");
                 document.getElementById("cadena").classList.remove("bien");
+                document.getElementById("icono").classList.remove("fa-check-circle");
+                document.getElementById("icono").classList.add("fa-times-circle");
 
                 document.getElementById("siguiente").classList.add("desactivado");
+                setSms("Esta cadena no es correcta...!");
             }
         }
 
@@ -64,37 +76,48 @@ const Settings = () => {
                 if(regex.test(e.target.value)){
                     document.getElementById("cadena").classList.add("bien");
                     document.getElementById("cadena").classList.remove("mal");
+                    document.getElementById("icono").classList.add("fa-check-circle");
+                    document.getElementById("icono").classList.remove("fa-times-circle");
                     
                     document.getElementById("iniciar").classList.remove("desactivado");
                     document.getElementById("pausar").classList.remove("desactivado");
                     document.getElementById("reiniciar").classList.remove("desactivado");
                     // document.getElementById("toggleState").classList.remove("desactivado");
-                    
+                    setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
                 }
                 else{
                     document.getElementById("cadena").classList.add("mal");
                     document.getElementById("cadena").classList.remove("bien");
+                    document.getElementById("icono").classList.remove("fa-check-circle");
+                    document.getElementById("icono").classList.add("fa-times-circle");
 
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("pausar").classList.add("desactivado");
                     document.getElementById("reiniciar").classList.add("desactivado");
                     // document.getElementById("toggleState").classList.add("desactivado");
+                    setSms("Esta cadena no es correcta...!");
                 }
             }
             else{
                 if(regex.test(e.target.value)){
                     document.getElementById("cadena").classList.add("bien");
                     document.getElementById("cadena").classList.remove("mal");
-    
+                    document.getElementById("icono").classList.add("fa-check-circle");
+                    document.getElementById("icono").classList.remove("fa-times-circle");
+
                     document.getElementById("siguiente").classList.remove("desactivado");
+                    setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
                 }
                 else{
                     document.getElementById("cadena").classList.add("mal");
                     document.getElementById("cadena").classList.remove("bien");
+                    document.getElementById("icono").classList.remove("fa-check-circle");
+                    document.getElementById("icono").classList.add("fa-times-circle");
 
                     document.getElementById("siguiente").classList.add("desactivado");
+                    setSms("Esta cadena no es correcta...!");
                 }
             }
         } 
@@ -144,7 +167,11 @@ const Settings = () => {
             <p>Configuración y parametrización</p>
             <div className="wrapper__input">
                 <label className="label-cadena" htmlFor="cadena">Ingresa aqui la cadena a analizar</label>
-                <input onChange={handleChange} type="text" id="cadena" name="cadena" placeholder="Ej: aabbb, máximo 18 caracteres" />
+                <div id="cadena" className="input">
+                    <input id="entrada" onChange={handleChange} type="text" autoComplete="off" name="cadena" placeholder="Ej: aabbb, máximo 18 caracteres" />
+                    <i id="icono" className="fas fa-times-circle"></i>
+                    <p className="sms activo">{sms}</p>
+                </div>
             </div>
             <div className="wrapper__input">
                 <p>¿ Deseas ver el paso a paso del proceso ?</p>

@@ -2,7 +2,8 @@
     // background-color: transparent;
     // border: 2px solid rgb(163, 163, 163);
     border-radius: 5px;
-    
+    // margin-bottom: 30px;
+
     #red{
         background-color: white;
         border: 1px solid rgb(163, 163, 163);
@@ -24,12 +25,13 @@
 .glide{
     // border: 1px solid blue;
     cursor: auto;
+    margin-top: 30px;
     .glide__track{
         border: 1px solid rgb(163, 163, 163);
         margin: 10px 0;
         padding: 0;
         height: 120px;
-        // width: 100%;
+        width: 100%;
         box-shadow: 0px 5px 5px -2px $segundario;
         border-radius: 5px;
         border-top: 4px solid $principal;
@@ -46,7 +48,7 @@
             align-items: center;
             border-radius: 2px;
             font-size: 1.5rem;
-            z-index: 50;
+            // z-index: 50;
             transition: .1s ease;
 
             &.glide__slide--active{
@@ -71,6 +73,7 @@
             img{
                 position: relative;
                 top: -17px;
+                left: -16px;
             }
 
         }

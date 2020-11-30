@@ -7,7 +7,7 @@ const Cuerpo = () => {
         <div className="wrap">
             <div className="contenedor">
                 <div className="contenedor__izquierda">
-                    <h3>Representación gráfica de estados y transiciones</h3>
+                    <h3>Representación del autómata</h3>
                     <Diagramas/>
                 </div>
                 <div className="contenedor__derecha">

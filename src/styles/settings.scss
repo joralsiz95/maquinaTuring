@@ -108,7 +108,7 @@ form{
                 outline: none;
                 border: 0;
                 border-radius: 5px;
-                font-family: 'Josefin Sans', sans-serif;
+                font-family: Arial, sans-serif;
                 border: 3px solid transparent;
                 transition: .3s ease all;
 
@@ -241,6 +241,50 @@ form{
 
             }
             
+        }
+
+        .cargar{
+            @include botones();
+            margin-top: 10px;
+            background-color: #1FA5FF;
+            
+            p{
+                width: 40%;
+            }
+
+            &:hover{
+                transform: scale(1.03);
+                transition: .2s ease;
+            }
+            
+            &:active{
+                background-color: rgb(33, 104, 185);
+                color: white;
+                transform: scale(1);
+                transition: .2s ease;
+            }
+
+            @include botonDesactivado();            
+
+            &.cargada{
+                cursor: no-drop;
+                background-color: rgb(107, 221, 113);
+                color: rgb(255, 255, 255);
+                transition: .3s ease all;
+
+                &:hover{
+                    transform: scale(1);
+                    transition: .2s ease;
+                }
+                
+                &:active{
+                    background-color: rgb(107, 221, 113);
+                    color: rgb(255, 255, 255);
+                    transform: scale(1);
+                    transition: .2s ease;
+                }
+            }
+
         }
 
     }

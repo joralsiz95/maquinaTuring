@@ -12,12 +12,12 @@ const Diagramas = () => {
 
       var glide = new Glide('.glide',{
         type: "slider",
-        startAt: 15,
+        startAt: 10,
         perView: 11,
         focusAt: "center",
         gap: 5,
         // animationTimingFunc: "bounce",
-        animationDuration: 0,
+        animationDuration: 100,
         peek: 20,
         keyboard: false
       })
@@ -39,90 +39,42 @@ const Diagramas = () => {
         }
       },1000);
 
-
     },[])
 
     //ejemplo del grafo
     //prueba de funcionamiento del grafo
     useEffect(()=>{
         console.log(contenedor_grafo.current);
+        //crea el grafo
         crearRed(contenedor_grafo.current);
 
-        const grafo = red();
+        // const grafo = red();
         
-        var x=0;
-        function iniciar(){
-            if(x < 12){
-                ejecutaEsto(x+1,grafo);
-                x++;
-            }
-            else{
-                console.log("ya limite > 12");
-                clearInterval(idInterval)
-            }
-        }
+        // var x=0;
+        // function iniciar(){
+        //     if(x < 12){
+        //         ejecutaEsto(x+1,grafo);
+        //         x++;
+        //     }
+        //     else{
+        //         console.log("ya limite > 12");
+        //         clearInterval(idInterval)
+        //     }
+        // }
 
-        var idInterval = setInterval(iniciar,500);
+        // var idInterval = setInterval(iniciar,500);
       
     },[])
 
-    function ejecutaEsto(p,network){
-        switch(p){
-          case 1:
-            network.setSelection({nodes:[1],edges:[11]})
-            break;
-
-          case 2:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-          
-          case 3:
-            network.setSelection({nodes:[1],edges:[11]})  
-            // network.unselectAll();
-            break;
-          
-          case 4:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-          
-          case 5:
-            network.setSelection({nodes:[2],edges:[12]})  
-            // network.unselectAll();
-            break;
-          
-          case 6:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-          case 7:
-            network.setSelection({nodes:[3], edges:[23]})  
-            // network.unselectAll();
-            break;
-          case 8:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-          case 9:
-            network.setSelection({nodes:[3], edges:[33]})  
-            // network.unselectAll();
-            break;
-          case 10:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-          case 11:
-            network.setSelection({nodes:[4], edges:[34]})  
-            // network.unselectAll();
-            break;
-          case 12:
-            network.setSelection({nodes:[5]})  
-            // network.unselectAll();
-            break;
-        }  
-      }
-
+    const mostrarElementosEnLaCinta = () => { 
+      var vector = [];
+      for (let i = 0; i < 40; i++) vector.push("x");
+      
+      return vector.map((elem,i)=>(
+        <li className="glide__slide" key={i} ></li>
+      ));
+      
+    }
 
     return(
         <Fragment>
@@ -133,39 +85,12 @@ const Diagramas = () => {
 
             {/* Contenedor de la cinta */}
             <div className="glide">
+                <h3>Representación de la cinta</h3>
                 <div className="glide__track" data-glide-el="track">
                     <ul className="glide__slides">
-                        <li className="glide__slide">0</li>
-                        <li className="glide__slide">1</li>
-                        <li className="glide__slide">2</li>
-                        <li className="glide__slide">3</li>
-                        <li className="glide__slide">4</li>
-                        <li className="glide__slide">5</li>
-                        <li className="glide__slide">6</li>
-                        <li className="glide__slide">7</li>
-                        <li className="glide__slide">8</li>
-                        <li className="glide__slide">9</li>
-                        <li className="glide__slide">10</li>
-                        <li className="glide__slide">11</li>
-                        <li className="glide__slide">12</li>
-                        <li className="glide__slide">13</li>
-                        <li className="glide__slide">14</li>
-                        <li className="glide__slide">15</li>
-                        <li className="glide__slide">16</li>
-                        <li className="glide__slide">17</li>
-                        <li className="glide__slide">18</li>
-                        <li className="glide__slide">19</li>
-                        <li className="glide__slide">20</li>
-                        <li className="glide__slide">21</li>
-                        <li className="glide__slide">22</li>
-                        <li className="glide__slide">23</li>
-                        <li className="glide__slide">24</li>
-                        <li className="glide__slide">25</li>
-                        <li className="glide__slide">26</li>
-                        <li className="glide__slide">27</li>
-                        <li className="glide__slide">28</li>
-                        <li className="glide__slide">29</li>
-                        <li className="glide__slide">30</li>
+                        {
+                          mostrarElementosEnLaCinta()
+                        }
                     </ul>
                     <div className="señalador">
                     <img src="https://img.icons8.com/fluent/48/000000/sort-up.png"/>
@@ -181,3 +106,65 @@ const Diagramas = () => {
 }
 
 export default Diagramas;
+
+
+
+
+
+//pruebas
+// function ejecutaEsto(p,network){
+    //     switch(p){
+    //       case 1:
+    //         network.setSelection({nodes:[1],edges:[11]})
+    //         break;
+
+    //       case 2:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+          
+    //       case 3:
+    //         network.setSelection({nodes:[1],edges:[11]})  
+    //         // network.unselectAll();
+    //         break;
+          
+    //       case 4:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+          
+    //       case 5:
+    //         network.setSelection({nodes:[2],edges:[12]})  
+    //         // network.unselectAll();
+    //         break;
+          
+    //       case 6:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 7:
+    //         network.setSelection({nodes:[3], edges:[23]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 8:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 9:
+    //         network.setSelection({nodes:[3], edges:[33]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 10:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 11:
+    //         network.setSelection({nodes:[4], edges:[34]})  
+    //         // network.unselectAll();
+    //         break;
+    //       case 12:
+    //         network.setSelection({nodes:[5]})  
+    //         // network.unselectAll();
+    //         break;
+    //     }  
+    //   }

@@ -23,6 +23,7 @@ const Settings = () => {
                 document.getElementById("iniciar").classList.remove("desactivado");
                 document.getElementById("pausar").classList.remove("desactivado");
                 document.getElementById("reiniciar").classList.remove("desactivado");
+                document.getElementById("cargar").classList.remove("desactivado");
                 // document.getElementById("toggleState").classList.remove("desactivado");
                 setSms("OK Puedo trabajar con esta cadena");
                 setCadena(document.getElementById("entrada").value);
@@ -36,6 +37,7 @@ const Settings = () => {
                 document.getElementById("iniciar").classList.add("desactivado");
                 document.getElementById("pausar").classList.add("desactivado");
                 document.getElementById("reiniciar").classList.add("desactivado");
+                document.getElementById("cargar").classList.add("desactivado");
                 // document.getElementById("toggleState").classList.add("desactivado");
                 setSms("Esta cadena no es correcta...!");
             }
@@ -48,6 +50,8 @@ const Settings = () => {
                 document.getElementById("icono").classList.remove("fa-times-circle");
 
                 document.getElementById("siguiente").classList.remove("desactivado");
+                document.getElementById("cargar").classList.remove("desactivado");
+
                 setSms("OK Puedo trabajar con esta cadena");
                 setCadena(document.getElementById("entrada").value);
             }
@@ -58,6 +62,8 @@ const Settings = () => {
                 document.getElementById("icono").classList.add("fa-times-circle");
 
                 document.getElementById("siguiente").classList.add("desactivado");
+                document.getElementById("cargar").classList.add("desactivado");
+
                 setSms("Esta cadena no es correcta...!");
             }
         }
@@ -82,6 +88,8 @@ const Settings = () => {
                     document.getElementById("iniciar").classList.remove("desactivado");
                     document.getElementById("pausar").classList.remove("desactivado");
                     document.getElementById("reiniciar").classList.remove("desactivado");
+                    document.getElementById("cargar").classList.remove("desactivado");
+
                     // document.getElementById("toggleState").classList.remove("desactivado");
                     setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
@@ -95,6 +103,8 @@ const Settings = () => {
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("pausar").classList.add("desactivado");
                     document.getElementById("reiniciar").classList.add("desactivado");
+                    document.getElementById("cargar").classList.add("desactivado");
+
                     // document.getElementById("toggleState").classList.add("desactivado");
                     setSms("Esta cadena no es correcta...!");
                 }
@@ -107,6 +117,8 @@ const Settings = () => {
                     document.getElementById("icono").classList.remove("fa-times-circle");
 
                     document.getElementById("siguiente").classList.remove("desactivado");
+                    document.getElementById("cargar").classList.remove("desactivado");
+
                     setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
                 }
@@ -117,6 +129,8 @@ const Settings = () => {
                     document.getElementById("icono").classList.add("fa-times-circle");
 
                     document.getElementById("siguiente").classList.add("desactivado");
+                    document.getElementById("cargar").classList.add("desactivado");
+
                     setSms("Esta cadena no es correcta...!");
                 }
             }
@@ -127,7 +141,7 @@ const Settings = () => {
         if(pasos && !document.getElementById("toggleState").classList.contains("desactivado")){
             return(
                 <div className="pack-botones-pasos">
-                    <p>Para que la ejecución avance haga click en el sguiente boton:</p>
+                    <p>Para que la ejecución avance haga click en el siguiente boton:</p>
                     <a id="siguiente" className="siguiente">
                         <p>Siguiente</p>
                         <img src="https://img.icons8.com/material-sharp/48/000000/circled-chevron-right.png"/>
@@ -168,7 +182,7 @@ const Settings = () => {
             <div className="wrapper__input">
                 <label className="label-cadena" htmlFor="cadena">Ingresa aqui la cadena a analizar</label>
                 <div id="cadena" className="input">
-                    <input id="entrada" onChange={handleChange} type="text" autoComplete="off" name="cadena" placeholder="Ej: aabbb, máximo 18 caracteres" />
+                    <input id="entrada" onChange={handleChange} type="text" autoComplete="off" name="cadena" placeholder="aabbb, máximo 18 caracteres" />
                     <i id="icono" className="fas fa-times-circle"></i>
                     <p className="sms activo">{sms}</p>
                 </div>
@@ -177,6 +191,10 @@ const Settings = () => {
                 <p>¿ Deseas ver el paso a paso del proceso ?</p>
                 <input className="toggle-button" onClick={()=>setPasos(!pasos)} type="checkbox" name="porPasos" id="porPasos"/>
                 <label id="toggleState" className="label-custom" htmlFor="porPasos"></label>
+                <a id="cargar" className="cargar">
+                    <p>Cargar Maquina</p>
+                    <img src="https://img.icons8.com/metro/52/000000/submit-progress.png"/>
+                </a>
             </div>
             {
                 muestraBotones()

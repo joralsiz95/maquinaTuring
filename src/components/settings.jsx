@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { convertirEnVector } from '../library/funciones';
-import { generaRecorrido } from '../library/funciones';
+import { convertirEnVector, generarRecorrido } from '../library/funciones';
+import { red } from '../library/vis';
 
-const Settings = ({ cadenaMontar, establecerCadenaEnLaCinta }) => {
+const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, establecerRecorrido }) => {
     
     const [ cadena, setCadena ] = useState('');
     const [ pasos, setPasos ] = useState(false);
     const [ velocidad, setVelocidad ] = useState(50);
     const [ sms, setSms ] = useState('');
     const regex = /^[a-b]{2,18}$/;
+
+    useEffect(()=>{
+        console.log("joaaa ?> ",generarRecorrido(cadenaMontar));
+        establecerRecorrido(generarRecorrido(cadenaMontar));
+    },[cadenaMontar])
 
     useEffect(()=>{
         console.log("entro en el effect de toggle");
@@ -147,7 +152,8 @@ const Settings = ({ cadenaMontar, establecerCadenaEnLaCinta }) => {
             else{
                 //ejecuta la funcion que pone los datos en la cinta
                 establecerCadenaEnLaCinta(convertirEnVector(cadena));
-                // generarRecorrido(cadenaMontar);
+                // console.log("sin effect",cadenaMontar);
+                // establecerRecorrido(generarRecorrido(cadenaMontar));
             }
         } 
 
@@ -156,6 +162,33 @@ const Settings = ({ cadenaMontar, establecerCadenaEnLaCinta }) => {
             if(document.getElementById("iniciar").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
                 alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar\nRecuerda cargar la maquina antes de iniciar");
                 //falta validar mas
+            }
+            else{
+                console.log("iniciar:> ",recorrido);
+                
+                var i = 0;
+                var network = red();
+                
+                var idInterval = setInterval(()=>{
+                //   console.log("dentro del interval");
+                    if(i < recorrido.length){
+                    // console.log("dentro del if");
+                    //resaltando estado
+                    network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
+
+                    //cambiando lo que hay en el vector
+                    cadenaMontar[recorrido[i].indice] = recorrido[i].reemplazaPor
+
+                    //muevete
+                    document.getElementById(recorrido[i].clickEn).click();
+
+                    i++
+                  }
+                  else{
+                    clearInterval(idInterval);
+                  }
+                },1000);
+
             }
         }
 
@@ -186,7 +219,7 @@ const Settings = ({ cadenaMontar, establecerCadenaEnLaCinta }) => {
     }
 
     const muestraBotones = () => {
-        if(pasos && !document.getElementById("toggleState").classList.contains("desactivado")){
+        if(pasos){
             return(
                 <div className="pack-botones-pasos">
                     <p>Para que la ejecución avance haga click en el siguiente boton:</p>
@@ -253,7 +286,8 @@ const Settings = ({ cadenaMontar, establecerCadenaEnLaCinta }) => {
 }
 
 const mapStateToProps = state => ({
-    cadenaMontar: state.cadenaAMontar
+    cadenaMontar: state.cadenaAMontar,
+    recorrido: state.recorrido
 })
 
 const mapDispathcToProps = dispatch => ({
@@ -262,6 +296,13 @@ const mapDispathcToProps = dispatch => ({
         dispatch({
             type: 'ESTABLECER_CADENA',
             cadena
+        })
+    },
+
+    establecerRecorrido(vector){
+        dispatch({
+            type: 'ESTABLECER_RECORRIDO',
+            vector
         })
     }
 

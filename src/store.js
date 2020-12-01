@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
 
 const initialState = {
-    cadenaAMontar: []
+    cadenaAMontar: [],
+    recorrido: []
 }
 
 const reducer = (state = initialState,action) => {
@@ -12,6 +13,12 @@ const reducer = (state = initialState,action) => {
         return {
             ...state,
             cadenaAMontar: action.cadena
+        }
+
+        case "ESTABLECER_RECORRIDO":
+        return {
+            ...state,
+            recorrido: action.vector
         }
 
     }

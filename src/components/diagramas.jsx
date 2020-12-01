@@ -71,7 +71,7 @@ const Diagramas = ({ cadenaMontar }) => {
 
     useEffect(()=>{
       console.log("Actualizo cadena en la cinta");
-
+      // console.log("diagramas: ",cadenaMontar);
     },[cadenaMontar])
 
     const mostrarElementosEnLaCinta = () => { 
@@ -133,9 +133,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps,mapDispatchToProps)(Diagramas);
-
-
-
 
 
 //pruebas

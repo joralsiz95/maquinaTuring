@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { convertirEnVector, generarRecorrido } from '../library/funciones';
 import { red } from '../library/vis';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, establecerRecorrido }) => {
     
@@ -147,7 +151,13 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         if(e.target.id.includes("cargar")){
             console.log("Clickaste => ","cargar");
             if(document.getElementById("cargar").classList.contains("desactivado")){
-                alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes cargar la maquina")
+               // alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes cargar la maquina")
+               MySwal.fire({
+                title: "Error al cargar la maquina",
+                html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>No puedes cargar la maquina</p>,
+                footer: "ERROR",
+                icon: 'error',
+              });
             }
             else{
                 //ejecuta la funcion que pone los datos en la cinta
@@ -160,7 +170,14 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         if(e.target.id.includes("iniciar")){
             console.log("Clickaste => ","inicar");
             if(document.getElementById("iniciar").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
-                alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar\nRecuerda cargar la maquina antes de iniciar");
+                //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar\nRecuerda cargar la maquina antes de iniciar");
+                MySwal.fire({
+                    
+                    title: "Error al iniciar",
+                    html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                    footer: "ERROR",
+                    icon: 'error'
+                  });
                 //falta validar mas
             }
             else{
@@ -195,7 +212,13 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         if(e.target.id.includes("pausar")){
             console.log("Clickaste => ","pausar");
             if(document.getElementById("pausar").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
-                alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes pausar\nRecuerda cargar la maquina");
+                //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes pausar\nRecuerda cargar la maquina");
+                MySwal.fire({
+                    title: "Error al pausar",
+                    html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                    footer: "ERROR",
+                    icon: 'error',
+                });
                 //falta validar mas
             }
         }
@@ -203,7 +226,13 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         if(e.target.id.includes("reIniciar")){
             console.log("Clickaste => ","reinicar");
             if(document.getElementById("reIniciar").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
-                alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes reiniciar\nRecuerda cargar la maquina");
+                //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes reiniciar\nRecuerda cargar la maquina");
+                MySwal.fire({
+                    title: "Error al Reinicar",
+                    html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                    footer: "ERROR",
+                    icon: 'error'
+                  });
                 //falta validar mas
             }
         }
@@ -211,7 +240,13 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         if(e.target.id.includes("siguiente")){
             console.log("Clickaste => ","siguiente");
             if(document.getElementById("siguiente").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
-                alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes seguir el proceso por pasos\nRecuerda cargar la maquina");
+                //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes seguir el proceso por pasos\nRecuerda cargar la maquina");
+                MySwal.fire({
+                    title: "Error",
+                    html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                    footer: "ERROR",
+                    icon: 'error',
+                  });
                 //falta validar mas
             }
         }

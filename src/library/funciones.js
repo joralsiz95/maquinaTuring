@@ -9,6 +9,17 @@ export const convertirEnVector = (cadena) => {
     return vector.filter(e => e !== ' ');
 }
 
+export const convertirEnVectorAux = (cadena) => {
+    var vector = [];
+    for (let i = 0; i < cadena.length; i++) {
+        vector[i] = cadena[i];   
+    }
+    // el vecot queda ['#',...,'#']
+    return vector.filter(e => e !== ' ');
+}
+
+
+
 export const generarRecorrido = (entrada) => {
 
     let vector = entrada;

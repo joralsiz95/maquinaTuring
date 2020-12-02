@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { convertirEnVector, generarRecorrido } from '../library/funciones';
+import { convertirEnVector, generarRecorrido, convertirEnVectorAux } from '../library/funciones';
 import { red } from '../library/vis';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const MySwal = withReactContent(Swal);
 
-const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, establecerRecorrido }) => {
+const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establecerRecorrido }) => {
     
     const [ cadena, setCadena ] = useState('');
     const [ pasos, setPasos ] = useState(false);
@@ -15,10 +15,21 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
     const [ sms, setSms ] = useState('');
     const regex = /^[a-b]{2,18}$/;
 
+    // const [ cadenaParcial, setCadenaParcial ] = useState([]);
+
+    // useEffect(()=>{
+    //     console.log("joaaa ?> ",generarRecorrido(cadenaMontar));
+    //     establecerRecorrido(generarRecorrido(cadenaMontar));
+    // },[cadenaMontar])
+
     useEffect(()=>{
-        console.log("joaaa ?> ",generarRecorrido(cadenaMontar));
-        establecerRecorrido(generarRecorrido(cadenaMontar));
-    },[cadenaMontar])
+        console.log("effect settingss => ", cadenaAMontar);
+    },[cadenaAMontar]);
+
+    // useEffect(()=>{
+    //     console.log("entra en el effect de cadenaParcial?");
+    //     // establecerCadenaEnLaCinta(cadenaParcial);
+    // },[cadenaParcial]);
 
     useEffect(()=>{
         console.log("entro en el effect de toggle");
@@ -146,6 +157,17 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
         } 
     }
 
+    const construirNuevoVector = (index,element,vector) => {
+        let vectorRetornar = vector;
+        for (let x = 0; x < vectorRetornar.length; x++) {
+            if(x === index){
+                vectorRetornar[x] = element
+            }
+        }
+        // vectorRetornar.push("x");
+        return vectorRetornar;
+    }
+
     const handleClick = e => {
 
         if(e.target.id.includes("cargar")){
@@ -162,8 +184,9 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
             else{
                 //ejecuta la funcion que pone los datos en la cinta
                 establecerCadenaEnLaCinta(convertirEnVector(cadena));
+                // setCadenaParcial(convertirEnVector(cadena));
                 // console.log("sin effect",cadenaMontar);
-                // establecerRecorrido(generarRecorrido(cadenaMontar));
+                establecerRecorrido(generarRecorrido(convertirEnVector(cadena)));
             }
         } 
 
@@ -181,31 +204,52 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
                 //falta validar mas
             }
             else{
-                console.log("iniciar:> ",recorrido);
-                
-                var i = 0;
-                var network = red();
-                
-                var idInterval = setInterval(()=>{
-                //   console.log("dentro del interval");
-                    if(i < recorrido.length){
-                    // console.log("dentro del if");
-                    //resaltando estado
-                    network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
+                if(recorrido.length === 0){
+                    alert("No has cargado la maquina no puedes iniciar")
+                }
+                else{
+                    console.log("iniciar:> ",recorrido);
+                    
+                    var i = 0;
+                    var network = red();
 
-                    //cambiando lo que hay en el vector
-                    cadenaMontar[recorrido[i].indice] = recorrido[i].reemplazaPor
+                    // console.log("cadena parcial",cadenaParcial);
+                    
+                    var idInterval = setInterval(()=>{
+                        
+                        // let vec = cadenaParcial;
+                        //   console.log("dentro del interval");
+                        if(i < recorrido.length){
+                        // console.log("dentro del if");
+                        //resaltando estado
+                        network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
 
-                    //muevete
-                    document.getElementById(recorrido[i].clickEn).click();
+                        //cambiando lo que hay en el vector
+                        let parcial = construirNuevoVector(recorrido[i].indice,recorrido[i].reemplazaPor,cadenaAMontar);
+                        // for (let x = 0; x < vec.length; x++) {
+                        //     if(x === recorrido[i].indice){
+                        //         vec[x] = recorrido[i].reemplazaPor
+                        //     }
+                        // }
+                        
+                        console.log("cadenaParcial => ",parcial);
+                        // setCadenaParcial(parcial);
+                        establecerCadenaEnLaCinta(convertirEnVectorAux(parcial.join('')));
+                        // console.log("vectorParcial => ",vec);
+                        // console.log("cadenaCinta   => ",cadenaAMontar);
+                        console.log("intervalo     => ",i);
 
-                    i++
-                  }
-                  else{
-                    clearInterval(idInterval);
-                  }
-                },1000);
 
+                        //muevete
+                        document.getElementById(recorrido[i].clickEn).click();
+
+                        i++;
+                    }
+                    else{
+                        clearInterval(idInterval);
+                    }
+                    },2000);
+                }
             }
         }
 
@@ -321,7 +365,7 @@ const Settings = ({ cadenaMontar,  recorrido, establecerCadenaEnLaCinta, estable
 }
 
 const mapStateToProps = state => ({
-    cadenaMontar: state.cadenaAMontar,
+    cadenaAMontar: state.cadenaAMontar,
     recorrido: state.recorrido
 })
 

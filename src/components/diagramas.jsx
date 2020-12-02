@@ -71,7 +71,7 @@ const Diagramas = ({ cadenaMontar }) => {
 
     useEffect(()=>{
       console.log("Actualizo cadena en la cinta");
-      // console.log("diagramas: ",cadenaMontar);
+      console.log("Effect diagramas => ",cadenaMontar);
     },[cadenaMontar])
 
     const mostrarElementosEnLaCinta = () => { 

@@ -17,7 +17,7 @@
     justify-content: center;
     padding: 8px 18px;
     margin: 0 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     box-shadow: 0px 4px 5px -1px rgba(0,0,0,0.75);
     cursor: pointer;        
     z-index: 100;
@@ -352,7 +352,8 @@ form{
 
                 &.iniciar{
                     background-color: rgb(47, 241, 47);
-                
+                    width: 100%;
+
                     &:hover{
                         transform: scale(1.03);
                         transition: .2s ease;
@@ -367,39 +368,40 @@ form{
 
                 }
 
-                &.pausar{
-                    background-color: yellow;
+                // &.pausar{
+                //     background-color: yellow;
                 
-                    &:hover{
-                        transform: scale(1.03);
-                        transition: .2s ease;
-                    }
+                //     &:hover{
+                //         transform: scale(1.03);
+                //         transition: .2s ease;
+                //     }
                     
-                    &:active{
-                        background-color: rgb(126, 126, 10);
-                        color: white;
-                        transform: scale(1);
-                        transition: .2s ease;
-                    }
+                //     &:active{
+                //         background-color: rgb(126, 126, 10);
+                //         color: white;
+                //         transform: scale(1);
+                //         transition: .2s ease;
+                //     }
                 
-                }
+                // }
 
-                &.reiniciar{
-                    background-color: red;
-                
-                    &:hover{
-                        transform: scale(1.03);
-                        transition: .2s ease;
-                    }
+                // &.reiniciar{
+                //     background-color: yellow;
+                //     width: 100%;
+
+                //     &:hover{
+                //         transform: scale(1.03);
+                //         transition: .2s ease;
+                //     }
                     
-                    &:active{
-                        background-color: rgb(94, 15, 15);
-                        color: white;
-                        transform: scale(1);
-                        transition: .2s ease;
-                    }
+                //     &:active{
+                //         background-color: rgb(126, 126, 10);
+                //         color: white;
+                //         transform: scale(1);
+                //         transition: .2s ease;
+                //     }
                 
-                }
+                // }
                 
                 @include botonDesactivado();
             
@@ -423,7 +425,7 @@ form{
             margin: 20px 0;
 
             &.siguiente{
-                background-color: rgb(255, 144, 40);
+                background-color: yellow;
             
                 &:hover{
                     transform: scale(1.03);
@@ -431,7 +433,7 @@ form{
                 }
                 
                 &:active{
-                    background-color: rgb(105, 66, 7);
+                    background-color: rgb(126, 126, 10);
                     color: white;
                     transform: scale(1);
                     transition: .2s ease;

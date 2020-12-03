@@ -18,8 +18,6 @@ export const convertirEnVectorAux = (cadena) => {
     return vector.filter(e => e !== ' ');
 }
 
-
-
 export const generarRecorrido = (entrada) => {
 
     let vector = entrada;
@@ -113,4 +111,77 @@ export const generarRecorrido = (entrada) => {
     }
 
     return vectorRetorno;
+}
+
+
+
+export const cadenaProcesada = (array) => {
+    // console.log(array);
+    let procesado = true;
+    for (let i = 1; i < array.length-1; i++) {
+        // console.log(array[i]);
+        if(array[i] !== "a"){
+            return false;
+        }
+    }
+    return procesado;
+}
+
+export const obtenerVelocidad = (porcentaje) => {
+    
+    let relaciones = [
+        {
+            porcentaje: 100,
+            velocidad: 300
+        },
+        {
+            porcentaje: 90,
+            velocidad: 500
+        },
+        {
+            porcentaje: 80,
+            velocidad: 700
+        },
+        {
+            porcentaje: 70,
+            velocidad: 800
+        },
+        {
+            porcentaje: 60,
+            velocidad: 900
+        },
+        {
+            porcentaje: 50,
+            velocidad: 1000
+        },
+        {
+            porcentaje: 40,
+            velocidad: 1100
+        },
+        {
+            porcentaje: 30,
+            velocidad: 1400
+        },
+        {
+            porcentaje: 20,
+            velocidad: 1600
+        },
+        {
+            porcentaje: 10,
+            velocidad: 1800
+        },
+        {
+            porcentaje: 0,
+            velocidad: 2000
+        }
+    ]
+
+    let retorno = 300;
+    for (let i = 0; i < relaciones.length; i++) {
+        if(relaciones[i].porcentaje == porcentaje){
+            retorno = relaciones[i].velocidad;
+        }
+    }
+
+    return retorno;
 }

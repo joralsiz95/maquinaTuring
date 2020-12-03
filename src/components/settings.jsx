@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { convertirEnVector, generarRecorrido, convertirEnVectorAux } from '../library/funciones';
+import { convertirEnVector, generarRecorrido, convertirEnVectorAux, cadenaProcesada, obtenerVelocidad } from '../library/funciones';
 import { red } from '../library/vis';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -16,11 +16,28 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
     const [ j, setJ ] = useState(0);
     const regex = /^[a-b]{2,18}$/;
 
+
     //contador del paso a paso
 
     // useEffect(()=>{
     //     console.log("effect settingss => ", cadenaAMontar);
     // },[cadenaAMontar]);
+
+    useEffect(()=>{
+        // console.log(cadenaProcesada(["#","a","b","b","b","#"]));
+        if(pasos){
+            if(document.getElementById("cargar").classList.contains("cargado") && !cadenaProcesada(cadenaAMontar)){
+                document.getElementById("siguiente").classList.remove("desactivado")
+            }
+        }
+             
+        if(!pasos){
+            if(document.getElementById("cargar").classList.contains("cargado") && !cadenaProcesada(cadenaAMontar)){
+                document.getElementById("iniciar").classList.remove("desactivado")
+            }
+        }
+         
+    },[pasos]);
 
     useEffect(()=>{
         console.log("entro en el effect de toggle");
@@ -31,7 +48,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("icono").classList.add("fa-check-circle");
                 document.getElementById("icono").classList.remove("fa-times-circle");
                 
-                document.getElementById("iniciar").classList.remove("desactivado");
+                // document.getElementById("iniciar").classList.remove("desactivado");
                 // document.getElementById("pausar").classList.remove("desactivado");
                 // document.getElementById("reIniciar").classList.remove("desactivado");
                 document.getElementById("cargar").classList.remove("desactivado");
@@ -45,7 +62,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("icono").classList.remove("fa-check-circle");
                 document.getElementById("icono").classList.add("fa-times-circle");
 
-                document.getElementById("iniciar").classList.add("desactivado");
+                // if(document.getElementById("cargar").classList.contains("desactivado"))
+                //         document.getElementById("iniciar").classList.add("desactivado");
+                // document.getElementById("iniciar").classList.add("desactivado");
                 // document.getElementById("pausar").classList.add("desactivado");
                 // document.getElementById("reIniciar").classList.add("desactivado");
                 document.getElementById("cargar").classList.add("desactivado");
@@ -60,7 +79,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("icono").classList.add("fa-check-circle");
                 document.getElementById("icono").classList.remove("fa-times-circle");
 
-                document.getElementById("siguiente").classList.remove("desactivado");
+                // document.getElementById("siguiente").classList.remove("desactivado");
                 document.getElementById("cargar").classList.remove("desactivado");
 
                 setSms("OK Puedo trabajar con esta cadena");
@@ -72,7 +91,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("icono").classList.remove("fa-check-circle");
                 document.getElementById("icono").classList.add("fa-times-circle");
 
-                document.getElementById("siguiente").classList.add("desactivado");
+                // if(document.getElementById("cargar").classList.contains("desactivado"))
+                //         document.getElementById("siguiente").classList.add("desactivado");
+                // document.getElementById("siguiente").classList.add("desactivado");
                 document.getElementById("cargar").classList.add("desactivado");
 
                 setSms("Esta cadena no es correcta...!");
@@ -95,8 +116,8 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("cadena").classList.remove("mal");
                     document.getElementById("icono").classList.add("fa-check-circle");
                     document.getElementById("icono").classList.remove("fa-times-circle");
-                    
-                    document.getElementById("iniciar").classList.remove("desactivado");
+
+                    // document.getElementById("iniciar").classList.add("desactivado");                    
                     // document.getElementById("pausar").classList.remove("desactivado");
                     // document.getElementById("reIniciar").classList.remove("desactivado");
                     document.getElementById("cargar").classList.remove("desactivado");
@@ -111,7 +132,8 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("icono").classList.remove("fa-check-circle");
                     document.getElementById("icono").classList.add("fa-times-circle");
 
-                    document.getElementById("iniciar").classList.add("desactivado");
+                    // if(document.getElementById("cargar").classList.contains("desactivado"))
+                    //     document.getElementById("iniciar").classList.add("desactivado");
                     // document.getElementById("pausar").classList.add("desactivado");
                     // document.getElementById("reIniciar").classList.add("desactivado");
                     document.getElementById("cargar").classList.add("desactivado");
@@ -127,7 +149,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("icono").classList.add("fa-check-circle");
                     document.getElementById("icono").classList.remove("fa-times-circle");
 
-                    document.getElementById("siguiente").classList.remove("desactivado");
+                    // document.getElementById("siguiente").classList.remove("desactivado");
                     document.getElementById("cargar").classList.remove("desactivado");
 
                     setSms("OK Puedo trabajar con esta cadena");
@@ -139,7 +161,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("icono").classList.remove("fa-check-circle");
                     document.getElementById("icono").classList.add("fa-times-circle");
 
-                    document.getElementById("siguiente").classList.add("desactivado");
+                    // if(document.getElementById("cargar").classList.contains("desactivado"))
+                    //     document.getElementById("siguiente").classList.add("desactivado");
+                    // document.getElementById("siguiente").classList.add("desactivado");
                     document.getElementById("cargar").classList.add("desactivado");
 
                     setSms("Esta cadena no es correcta...!");
@@ -178,6 +202,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 // setCadenaParcial(convertirEnVector(cadena));
                 // console.log("sin effect",cadenaMontar);
                 establecerRecorrido(generarRecorrido(convertirEnVector(cadena)));
+                // console.log("XXXXXXXXXX", pasos);
+                if(!pasos) document.getElementById("iniciar").classList.remove("desactivado");
+                else document.getElementById("siguiente").classList.remove("desactivado");
+                
+
+                document.getElementById("cargar").classList.add("cargado");
             }
         } 
 
@@ -195,6 +225,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     });
                 }
                 else{
+                    if(!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length === 0)){
+                        alert("oye por favor carga la maquina")
+                    }
+                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
+                        alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                    }
                     if(document.getElementById("iniciar").classList.contains("corriendo")){
                         alert("La simulacion esta corriendo no seas mamooon, deja que termine")
                     }
@@ -206,11 +242,14 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 }
                 else{
                     console.log("iniciar:> ",recorrido);
+
+                    //obteniendo velocidad
+                    console.log(velocidad);
+                    let rapidez = obtenerVelocidad(velocidad)
+
                     //desactiva cuando se le da click he inicia el proceso
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("iniciar").classList.add("corriendo");
-
-
 
                     var i = 0;
                     var network = red();
@@ -222,38 +261,46 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         // let vec = cadenaParcial;
                         //   console.log("dentro del interval");
                         if(i < recorrido.length){
-                        // console.log("dentro del if");
-                        //resaltando estado
-                        network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
+                            // console.log("dentro del if");
+                            //resaltando estado
+                            network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
+                            setTimeout(()=>{
+                                network.setSelection({nodes:[4]});
+                            },rapidez-100)
 
-                        //cambiando lo que hay en el vector
-                        let parcial = construirNuevoVector(recorrido[i].indice,recorrido[i].reemplazaPor,cadenaAMontar);
-                        // for (let x = 0; x < vec.length; x++) {
-                        //     if(x === recorrido[i].indice){
-                        //         vec[x] = recorrido[i].reemplazaPor
-                        //     }
-                        // }
-                        
-                        console.log("cadenaParcial => ",parcial);
-                        // setCadenaParcial(parcial);
-                        establecerCadenaEnLaCinta(convertirEnVectorAux(parcial.join('')));
-                        // console.log("vectorParcial => ",vec);
-                        // console.log("cadenaCinta   => ",cadenaAMontar);
-                        console.log("intervalo     => ",i);
+                            //cambiando lo que hay en el vector
+                            let parcial = construirNuevoVector(recorrido[i].indice,recorrido[i].reemplazaPor,cadenaAMontar);
+                            // for (let x = 0; x < vec.length; x++) {
+                            //     if(x === recorrido[i].indice){
+                            //         vec[x] = recorrido[i].reemplazaPor
+                            //     }
+                            // }
+                            
+                            console.log("cadenaParcial => ",parcial);
+                            // setCadenaParcial(parcial);
+                            establecerCadenaEnLaCinta(convertirEnVectorAux(parcial.join('')));
+                            // console.log("vectorParcial => ",vec);
+                            // console.log("cadenaCinta   => ",cadenaAMontar);
+                            console.log("intervalo     => ",i);
 
+                            //muevete
+                            document.getElementById(recorrido[i].clickEn).click();    
 
-                        //muevete
-                        document.getElementById(recorrido[i].clickEn).click();
+                            i++;
+                        }
+                        else{
+                            // document.getElementById("iniciar").classList.remove("desactivado");
+                            document.getElementById("iniciar").classList.remove("corriendo");
+                            document.getElementById("cargar").classList.remove("cargado");
 
-                        i++;
-                    }
-                    else{
-                        document.getElementById("iniciar").classList.remove("desactivado");
-                        document.getElementById("iniciar").classList.remove("corriendo");
-                        alert("Proceso finalizaado")
-                        clearInterval(idInterval);
-                    }
-                    },300);
+                            //cuando termine queda en el ultimo estado
+                            network.setSelection({nodes:[3]})
+                            alert("Proceso finalizaado")
+                            //para quitar el boton reiniciar que se haga automatico
+                            // establecerCadenaEnLaCinta(convertirEnVector(cadena));
+                            clearInterval(idInterval);
+                        }
+                    },rapidez);
                 }
             }
         }
@@ -310,6 +357,15 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         icon: 'error',
                     });
                 }
+                else{
+                    if(!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length === 0)){
+                        alert("oye por favor carga la maquina")
+                    }
+                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
+                        alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                    }
+                }
+
             }
             else{
                 if(recorrido.length === 0){
@@ -323,6 +379,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         // console.log("dentro del if");
                         //resaltando estado
                         network.setSelection({nodes:recorrido[j].resalta.nodo, edges:recorrido[j].resalta.enlace});
+                        setTimeout(()=>{
+                            network.setSelection({nodes:[4]});
+                        },400)
+                        setTimeout(()=>{
+                            network.setSelection({nodes:recorrido[j].resalta.nodo});
+                        },500)
 
                         //cambiando lo que hay en el vector
                         let parcial = construirNuevoVector(recorrido[j].indice,recorrido[j].reemplazaPor,cadenaAMontar);
@@ -346,8 +408,11 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         setJ(j+1);
                     }
                     else{
+                        document.getElementById("siguiente").classList.add("desactivado");
+                        document.getElementById("cargar").classList.remove("cargado");
+
                         //aqui termina el recorrido ps
-                        alert("aqui termina el recorrido paso a paso")
+                        alert("aqui termina el recorrido paso a paso");
                         setJ(0);
                     }
 
@@ -362,7 +427,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             return(
                 <div className="pack-botones-pasos">
                     <p>Para que la ejecución avance haga click en el siguiente boton:</p>
-                    <a id="siguiente" name="siguiente" onClick={handleClick} className="siguiente">
+                    <a id="siguiente" name="siguiente" onClick={handleClick} className="siguiente desactivado">
                         <p id="t_siguiente" >Siguiente</p>
                         <img id="i_siguiente" src="https://img.icons8.com/material-sharp/48/000000/circled-chevron-right.png"/>
                     </a>
@@ -378,7 +443,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         <p id="value_deslizable" className="value_deslizable">{velocidad}%</p>
                     </div>
                     <div className="contenedor__botones">
-                        <a id="iniciar" name="iniciar" onClick={handleClick} className="iniciar">
+                        <a id="iniciar" name="iniciar" onClick={handleClick} className="iniciar desactivado">
                             <p id="t_iniciar" >Iniciar</p>
                             <img id="i_iniciar" src="https://img.icons8.com/ios-filled/50/000000/chevron-right.png"/>
                         </a>

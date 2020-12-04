@@ -12,7 +12,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
     const [ cadena, setCadena ] = useState('');
     const [ pasos, setPasos ] = useState(false);
     const [ velocidad, setVelocidad ] = useState(50);
-    const [ sms, setSms ] = useState('');
+    const [ sms, setSms ] = useState('Solo se aceptan a y b(minusculas).');
     const [ j, setJ ] = useState(0);
     const regex = /^[a-b]{2,18}$/;
 
@@ -219,26 +219,46 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     MySwal.fire({
                         
                         title: "Error al iniciar",
-                        html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                        html: <p>Recuerda cargar la maquina <br></br> y mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar.</p>,
                         footer: "ERROR",
                         icon: 'error'
                     });
                 }
                 else{
                     if(!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length === 0)){
-                        alert("oye por favor carga la maquina")
+                        MySwal.fire({
+                            title: "Oops...",
+                            html: <p>Oye debes cargar la maquina </p>,
+                            icon: "warning"
+                        });
                     }
                     if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
-                        alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                        //alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                        MySwal.fire({
+                            title: "Opps....",
+                            html: "Si notas que la cinta ahora solo tiene 'a', debes cargar la maquina de nuevo. ",
+                            icon: "warning"
+                       });
+
                     }
                     if(document.getElementById("iniciar").classList.contains("corriendo")){
-                        alert("La simulacion esta corriendo no seas mamooon, deja que termine")
+                        //alert("La simulacion esta corriendo no seas mamooon, deja que termine")
+                        MySwal.fire({
+                            title: "Opps....",
+                            html: "La simulacion esta corriendo, deja que termine. ",
+                            icon: "warning"
+                       });
                     }
                 }
             }
             else{
                 if(recorrido.length === 0){
-                    alert("No has cargado la maquina no puedes iniciar el proceso")
+                    //alert("No has cargado la maquina no puedes iniciar el proceso")
+                    MySwal.fire({
+                        title: "Opps....",
+                        html: "No has cargado la maquina no puedes iniciar el proceso. ",
+                        icon: "warning"
+                   });
                 }
                 else{
                     console.log("iniciar:> ",recorrido);
@@ -295,7 +315,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
 
                             //cuando termine queda en el ultimo estado
                             network.setSelection({nodes:[3]})
-                            alert("Proceso finalizaado")
+                            //alert("Proceso finalizaado")
+                            MySwal.fire({
+                                title: "Culminado",
+                                text: "Proceso terminado con exito.",
+                                icon: "success"
+                            });
                             //para quitar el boton reiniciar que se haga automatico
                             // establecerCadenaEnLaCinta(convertirEnVector(cadena));
                             clearInterval(idInterval);
@@ -352,24 +377,39 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 if(document.getElementById("cargar").classList.contains("desactivado")){   
                     MySwal.fire({
                         title: "Error",
-                        html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
+                        html: <p>Recuerda cargar la maquina <br></br> y mientras la cadena de entrada este vacia o sea incorrecta, no puedes hacer el paso a paso.</p>,
                         footer: "ERROR",
                         icon: 'error',
                     });
                 }
                 else{
                     if(!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length === 0)){
-                        alert("oye por favor carga la maquina")
+                        //alert("oye por favor carga la maquina")
+                        MySwal.fire({
+                            title: "Opps...",
+                            html: "Oye debes cargar la maquina",
+                            icon: "warning"
+                        });
                     }
                     if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
-                        alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                       // alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                       MySwal.fire({
+                            title: "Opps....",
+                            html: "si notas que la cinta ahora solo tiene 'a', debes cargar la maquina de nuevo ",
+                            icon: "warning"
+                       });
                     }
                 }
 
             }
             else{
                 if(recorrido.length === 0){
-                    alert("No puedes iniciar el paso a paso sin antes cargar la maquina");
+                    //alert("No puedes iniciar el paso a paso sin antes cargar la maquina");
+                    MySwal.fire({
+                        title: "Opps....",
+                        text: "No puedes inicar el paso a paso sin antes cargar la maquina.",
+                        icon: "warning"
+                    });
                 }
                 else{
                     console.log("pasos:> ",recorrido);
@@ -412,7 +452,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         document.getElementById("cargar").classList.remove("cargado");
 
                         //aqui termina el recorrido ps
-                        alert("aqui termina el recorrido paso a paso");
+                        //alert("aqui termina el recorrido paso a paso");
+                        MySwal.fire({
+                            title: "Culminado",
+                            text: "Proceso terminado con exito.",
+                            icon: "success"
+                        });
                         setJ(0);
                     }
 
@@ -465,7 +510,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
         <form>
             <p>Configuración y parametrización</p>
             <div className="wrapper__input">
-                <label className="label-cadena" htmlFor="cadena">Ingresa aqui la cadena a analizar</label>
+                <label className="label-cadena" htmlFor="cadena">Ingresa aqui la cadena a analizar<br></br> (Solo se admiten minusculas).</label>
                 <div id="cadena" className="input">
                     <input id="entrada" onChange={handleChange} type="text" autoComplete="off" name="cadena" placeholder="aabbb, min: 2, max: 18" />
                     <i id="icono" className="fas fa-times-circle"></i>
@@ -473,7 +518,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 </div>
             </div>
             <div className="wrapper__input">
-                <p>¿ Deseas ver el paso a paso del proceso ?</p>
+                <p>¿DESEAS HACER EL PASO A PASO MANUAL?</p>
                 <input className="toggle-button" onClick={()=>setPasos(!pasos)} type="checkbox" name="porPasos" id="porPasos"/>
                 <label id="toggleState" className="label-custom" htmlFor="porPasos"></label>
                 <a id="cargar" name="cargar" onClick={handleClick} className="cargar">

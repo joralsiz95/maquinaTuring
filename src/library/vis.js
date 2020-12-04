@@ -17,10 +17,10 @@ export function crearRed(contenedor){
 
     // creando arreglo de conexiones
     var edges = new DataSet([
-        { id:11, from: 1, to: 1, arrows: "to", label: "𝙖 ➤ 𝙖 , 𝙍", color: {color: "#1FA5FF", highlight:"rgb(255, 42, 113)"}, font: { align: "top" }, selfReference:{size: 40}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
-        { id:112, from: 1, to: 1, arrows: "to", label: "𝙗 ➤ 𝙖 , 𝙍", color: {color: "#1FA5FF", highlight:"rgb(255, 42, 113)"}, font: { align: "top" }, selfReference:{size: 40,angle:180}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
-        { id:12, from: 1, to: 2, arrows: { to: { enabled: true ,scaleFactor: 1.2, type: "arrow" } }, color: {color: "#1FA5FF", highlight:"rgb(255, 42, 113)"}, label: "#̅  ➤ #̅  , 𝙇", font: { align: "top" }, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
-        { id:22, from: 2, to: 2, arrows: "to", label: "𝙖 ➤ 𝙖 , 𝙇", color: {color: "#1FA5FF", highlight:"rgb(255, 42, 113)"}, font: { align: "top" }, selfReference:{size: 40,angle:200}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
+        { id:11, from: 1, to: 1, arrows: "to", label: "𝙖 ➤ 𝙖 , 𝙍", color: {color: "#1FA5FF", highlight:"rgb(34, 236, 14)"}, font: { align: "top" }, selfReference:{size: 40}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
+        { id:112, from: 1, to: 1, arrows: "to", label: "𝙗 ➤ 𝙖 , 𝙍", color: {color: "#1FA5FF", highlight:"rgb(34, 236, 14)"}, font: { align: "top" }, selfReference:{size: 40,angle:180}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
+        { id:12, from: 1, to: 2, arrows: { to: { enabled: true ,scaleFactor: 1.2, type: "arrow" } }, color: {color: "#1FA5FF", highlight:"rgb(42, 42, 255)"}, label: "#̅  ➤ #̅  , 𝙇", font: { align: "top" }, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
+        { id:22, from: 2, to: 2, arrows: "to", label: "𝙖 ➤ 𝙖 , 𝙇", color: {color: "#1FA5FF", highlight:"rgb(42, 42, 255)"}, font: { align: "top" }, selfReference:{size: 40,angle:200}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
         { id:23, from: 2, to: 3, arrows: "to", label: "#̅  ➤ #̅  , 𝙍",dashes: true, color: {color: "#1FA5FF", highlight:"red"}, font: { align: "top" }, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
         // { id:33, from: 3, to: 3, arrows: "to", label: "con_4", font: { align: "top" }, selfReference:{size: 30}, selectionWidth: 2.3, shadow:{ enabled: true, color: 'rgba(0,0,0,.4)', size:5, x:2, y:2 } },
         

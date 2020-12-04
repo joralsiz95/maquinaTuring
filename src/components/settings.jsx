@@ -191,7 +191,11 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                // alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes cargar la maquina")
                MySwal.fire({
                 title: "Error al cargar la maquina",
-                html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>No puedes cargar la maquina</p>,
+                html: <p>No se puede cargar la máquina<br/>
+                        Esto puede estar pasando por una de dos razones:<br/><br/>
+                        1.) Mientras la cadena de entrada este vacia o sea incorrecta.<br/><br/>
+                        2.) Empezaste un proceso: si sea manual debes terminarlo y si es automático espera a que termine.
+                      </p>,
                 footer: "ERROR",
                 icon: 'error',
               });
@@ -219,7 +223,10 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     MySwal.fire({
                         
                         title: "Error al iniciar",
-                        html: <p>Recuerda cargar la maquina <br></br> y mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar.</p>,
+                        html: <p>Ten en cuenta las siguientes recomendaciones: <br/><br/>
+                            1.) Recuerda cargar la maquina y mientras la cadena de entrada este vacia o sea    incorrecta, no puedes iniciar. <br/><br/>
+                            2.) Si ya iniciaste un proceso debes esperar a que este finalice. 
+                        </p>,
                         footer: "ERROR",
                         icon: 'error'
                     });
@@ -271,6 +278,10 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("iniciar").classList.add("corriendo");
 
+                    //desactivando botones de toggle y cargar
+                    document.getElementById("cargar").classList.add("desactivado");
+                    document.getElementById("palanca").classList.add("desactivado");
+
                     var i = 0;
                     var network = red();
 
@@ -313,11 +324,15 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                             document.getElementById("iniciar").classList.remove("corriendo");
                             document.getElementById("cargar").classList.remove("cargado");
 
+                            //activando nuevamente botones cargar y toggle
+                            document.getElementById("cargar").classList.remove("desactivado");
+                            document.getElementById("palanca").classList.remove("desactivado");
+
                             //cuando termine queda en el ultimo estado
                             network.setSelection({nodes:[3]})
                             //alert("Proceso finalizaado")
                             MySwal.fire({
-                                title: "Culminado",
+                                title: "Finalizado",
                                 text: "Proceso terminado con exito.",
                                 icon: "success"
                             });
@@ -414,6 +429,11 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 else{
                     console.log("pasos:> ",recorrido);
                     console.log("loongitud del recorrido",recorrido.length);
+                    
+                    //desactivando botones de toggle y cargar
+                    document.getElementById("cargar").classList.add("desactivado");
+                    document.getElementById("palanca").classList.add("desactivado");
+                                        
                     var network = red();
                     if(j < recorrido.length){
                         // console.log("dentro del if");
@@ -451,10 +471,14 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         document.getElementById("siguiente").classList.add("desactivado");
                         document.getElementById("cargar").classList.remove("cargado");
 
+                        //activando nuevamente botones cargar y toggle
+                        document.getElementById("cargar").classList.remove("desactivado");
+                        document.getElementById("palanca").classList.remove("desactivado");
+
                         //aqui termina el recorrido ps
                         //alert("aqui termina el recorrido paso a paso");
                         MySwal.fire({
-                            title: "Culminado",
+                            title: "Finalizado",
                             text: "Proceso terminado con exito.",
                             icon: "success"
                         });
@@ -465,6 +489,16 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             }
         }
 
+    }
+
+    const handleClickPasos = e => {
+        if(!document.getElementById("palanca").classList.contains("desactivado")){
+            setPasos(!pasos)
+            // console.log(pasos);
+        }
+        else{
+            e.preventDefault();
+        }
     }
 
     const muestraBotones = () => {
@@ -519,8 +553,8 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             </div>
             <div className="wrapper__input">
                 <p>¿DESEAS HACER EL PASO A PASO MANUAL?</p>
-                <input className="toggle-button" onClick={()=>setPasos(!pasos)} type="checkbox" name="porPasos" id="porPasos"/>
-                <label id="toggleState" className="label-custom" htmlFor="porPasos"></label>
+                <input className="toggle-button" onClick={handleClickPasos} type="checkbox" name="porPasos" id="porPasos"/>
+                <label id="toggleState" id="palanca" className="label-custom" htmlFor="porPasos"></label>
                 <a id="cargar" name="cargar" onClick={handleClick} className="cargar">
                     <p id="t_cargar" >Cargar Maquina</p>
                     <img id="i_cargar" src="https://img.icons8.com/metro/52/000000/submit-progress.png"/>

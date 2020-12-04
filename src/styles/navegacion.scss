@@ -35,7 +35,43 @@
         justify-content: center;
         align-items: center;
         // border: 2px solid red;
-        width: 25%;
+        width: 35%;
+
+        a{
+            @include botones();
+            p{
+                font-size: 1rem;
+                color: white;
+            }
+            img{
+                position: relative;
+                top: -2px;
+                left: 3px;
+                height: 30px;
+                width: 30px;
+                background-color: $principal;
+                border-radius: 3px;
+            }
+            &.instrucciones{
+
+                background-color: $segundario;
+                width: 30%;
+
+                &:hover{
+                    transform: scale(1.03);
+                    transition: .2s ease;
+                }
+                
+                &:active{
+                    background-color: rgba($color: $segundario, $alpha: .5);
+                    color: white;
+                    transform: scale(1);
+                    transition: .2s ease;
+                }
+
+            }
+        }
+
     }
 
 }

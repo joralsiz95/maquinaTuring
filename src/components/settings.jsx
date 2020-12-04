@@ -325,7 +325,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                             document.getElementById("cargar").classList.remove("cargado");
 
                             //activando nuevamente botones cargar y toggle
-                            document.getElementById("cargar").classList.remove("desactivado");
+                            if(regex.test(document.getElementById("entrada").value)){
+                                document.getElementById("cargar").classList.remove("desactivado");
+                            }
                             document.getElementById("palanca").classList.remove("desactivado");
 
                             //cuando termine queda en el ultimo estado
@@ -472,7 +474,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         document.getElementById("cargar").classList.remove("cargado");
 
                         //activando nuevamente botones cargar y toggle
-                        document.getElementById("cargar").classList.remove("desactivado");
+                        if(regex.test(document.getElementById("entrada").value)){
+                            document.getElementById("cargar").classList.remove("desactivado");
+                        }
                         document.getElementById("palanca").classList.remove("desactivado");
 
                         //aqui termina el recorrido ps

@@ -237,25 +237,6 @@ form{
 
             @include botonDesactivado();            
 
-            // &.cargada{
-            //     cursor: no-drop;
-            //     background-color: rgb(107, 221, 113);
-            //     color: rgb(255, 255, 255);
-            //     transition: .3s ease all;
-
-            //     &:hover{
-            //         transform: scale(1);
-            //         transition: .2s ease;
-            //     }
-                
-            //     &:active{
-            //         background-color: rgb(107, 221, 113);
-            //         color: rgb(255, 255, 255);
-            //         transform: scale(1);
-            //         transition: .2s ease;
-            //     }
-            // }
-
         }
 
     }
@@ -338,41 +319,6 @@ form{
                     }
 
                 }
-
-                // &.pausar{
-                //     background-color: yellow;
-                
-                //     &:hover{
-                //         transform: scale(1.03);
-                //         transition: .2s ease;
-                //     }
-                    
-                //     &:active{
-                //         background-color: rgb(126, 126, 10);
-                //         color: white;
-                //         transform: scale(1);
-                //         transition: .2s ease;
-                //     }
-                
-                // }
-
-                // &.reiniciar{
-                //     background-color: yellow;
-                //     width: 100%;
-
-                //     &:hover{
-                //         transform: scale(1.03);
-                //         transition: .2s ease;
-                //     }
-                    
-                //     &:active{
-                //         background-color: rgb(126, 126, 10);
-                //         color: white;
-                //         transform: scale(1);
-                //         transition: .2s ease;
-                //     }
-                
-                // }
                 
                 @include botonDesactivado();
             

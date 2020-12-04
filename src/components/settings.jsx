@@ -19,9 +19,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
 
     //contador del paso a paso
 
-    // useEffect(()=>{
-    //     console.log("effect settingss => ", cadenaAMontar);
-    // },[cadenaAMontar]);
+    
 
     useEffect(()=>{
         // console.log(cadenaProcesada(["#","a","b","b","b","#"]));
@@ -46,13 +44,8 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("cadena").classList.add("bien");
                 document.getElementById("cadena").classList.remove("mal");
                 document.getElementById("icono").classList.add("fa-check-circle");
-                document.getElementById("icono").classList.remove("fa-times-circle");
-                
-                // document.getElementById("iniciar").classList.remove("desactivado");
-                // document.getElementById("pausar").classList.remove("desactivado");
-                // document.getElementById("reIniciar").classList.remove("desactivado");
+                document.getElementById("icono").classList.remove("fa-times-circle");               
                 document.getElementById("cargar").classList.remove("desactivado");
-                // document.getElementById("toggleState").classList.remove("desactivado");
                 setSms("OK Puedo trabajar con esta cadena");
                 setCadena(document.getElementById("entrada").value);
             }
@@ -61,14 +54,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("cadena").classList.remove("bien");
                 document.getElementById("icono").classList.remove("fa-check-circle");
                 document.getElementById("icono").classList.add("fa-times-circle");
-
-                // if(document.getElementById("cargar").classList.contains("desactivado"))
-                //         document.getElementById("iniciar").classList.add("desactivado");
-                // document.getElementById("iniciar").classList.add("desactivado");
-                // document.getElementById("pausar").classList.add("desactivado");
-                // document.getElementById("reIniciar").classList.add("desactivado");
                 document.getElementById("cargar").classList.add("desactivado");
-                // document.getElementById("toggleState").classList.add("desactivado");
                 setSms("Esta cadena no es correcta...!");
             }
         }
@@ -78,10 +64,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("cadena").classList.remove("mal");
                 document.getElementById("icono").classList.add("fa-check-circle");
                 document.getElementById("icono").classList.remove("fa-times-circle");
-
-                // document.getElementById("siguiente").classList.remove("desactivado");
                 document.getElementById("cargar").classList.remove("desactivado");
-
                 setSms("OK Puedo trabajar con esta cadena");
                 setCadena(document.getElementById("entrada").value);
             }
@@ -90,12 +73,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 document.getElementById("cadena").classList.remove("bien");
                 document.getElementById("icono").classList.remove("fa-check-circle");
                 document.getElementById("icono").classList.add("fa-times-circle");
-
-                // if(document.getElementById("cargar").classList.contains("desactivado"))
-                //         document.getElementById("siguiente").classList.add("desactivado");
-                // document.getElementById("siguiente").classList.add("desactivado");
                 document.getElementById("cargar").classList.add("desactivado");
-
                 setSms("Esta cadena no es correcta...!");
             }
         }
@@ -103,12 +81,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
     },[pasos])
 
     useEffect(()=>{document.getElementById("cadena").classList.remove("mal")},[]);
-
-    const handleChange = e => {
-        console.log(e.target.name," => ",e.target.value);
-        
-        if(e.target.name === "deslizante") setVelocidad(e.target.value);
-        
+   const handleChange = e => {
+        console.log(e.target.name," => ",e.target.value);        
+        if(e.target.name === "deslizante") setVelocidad(e.target.value);        
         if(e.target.name === "cadena"){
             if(!pasos){
                 if(regex.test(e.target.value)){
@@ -116,13 +91,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("cadena").classList.remove("mal");
                     document.getElementById("icono").classList.add("fa-check-circle");
                     document.getElementById("icono").classList.remove("fa-times-circle");
-
-                    // document.getElementById("iniciar").classList.add("desactivado");                    
-                    // document.getElementById("pausar").classList.remove("desactivado");
-                    // document.getElementById("reIniciar").classList.remove("desactivado");
                     document.getElementById("cargar").classList.remove("desactivado");
-
-                    // document.getElementById("toggleState").classList.remove("desactivado");
                     setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
                 }
@@ -131,14 +100,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("cadena").classList.remove("bien");
                     document.getElementById("icono").classList.remove("fa-check-circle");
                     document.getElementById("icono").classList.add("fa-times-circle");
-
-                    // if(document.getElementById("cargar").classList.contains("desactivado"))
-                    //     document.getElementById("iniciar").classList.add("desactivado");
-                    // document.getElementById("pausar").classList.add("desactivado");
-                    // document.getElementById("reIniciar").classList.add("desactivado");
                     document.getElementById("cargar").classList.add("desactivado");
-
-                    // document.getElementById("toggleState").classList.add("desactivado");
                     setSms("Esta cadena no es correcta...!");
                 }
             }
@@ -148,10 +110,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("cadena").classList.remove("mal");
                     document.getElementById("icono").classList.add("fa-check-circle");
                     document.getElementById("icono").classList.remove("fa-times-circle");
-
-                    // document.getElementById("siguiente").classList.remove("desactivado");
                     document.getElementById("cargar").classList.remove("desactivado");
-
                     setSms("OK Puedo trabajar con esta cadena");
                     setCadena(e.target.value);
                 }
@@ -160,12 +119,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     document.getElementById("cadena").classList.remove("bien");
                     document.getElementById("icono").classList.remove("fa-check-circle");
                     document.getElementById("icono").classList.add("fa-times-circle");
-
-                    // if(document.getElementById("cargar").classList.contains("desactivado"))
-                    //     document.getElementById("siguiente").classList.add("desactivado");
-                    // document.getElementById("siguiente").classList.add("desactivado");
                     document.getElementById("cargar").classList.add("desactivado");
-
                     setSms("Esta cadena no es correcta...!");
                 }
             }
@@ -179,7 +133,6 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 vectorRetornar[x] = element
             }
         }
-        // vectorRetornar.push("x");
         return vectorRetornar;
     }
 
@@ -188,7 +141,6 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
         if(e.target.id.includes("cargar")){
             console.log("Clickaste => ","cargar");
             if(document.getElementById("cargar").classList.contains("desactivado")){
-               // alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes cargar la maquina")
                MySwal.fire({
                 title: "Error al cargar la maquina",
                 html: <p>No se puede cargar la máquina<br/>
@@ -203,14 +155,9 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             else{
                 //ejecuta la funcion que pone los datos en la cinta
                 establecerCadenaEnLaCinta(convertirEnVector(cadena));
-                // setCadenaParcial(convertirEnVector(cadena));
-                // console.log("sin effect",cadenaMontar);
                 establecerRecorrido(generarRecorrido(convertirEnVector(cadena)));
-                // console.log("XXXXXXXXXX", pasos);
                 if(!pasos) document.getElementById("iniciar").classList.remove("desactivado");
-                else document.getElementById("siguiente").classList.remove("desactivado");
-                
-
+                else document.getElementById("siguiente").classList.remove("desactivado");                
                 document.getElementById("cargar").classList.add("cargado");
             }
         } 
@@ -220,8 +167,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             if(document.getElementById("iniciar").classList.contains("desactivado")){
                 //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes iniciar\nRecuerda cargar la maquina antes de iniciar");
                 if(document.getElementById("cargar").classList.contains("desactivado")){
-                    MySwal.fire({
-                        
+                    MySwal.fire({                        
                         title: "Error al iniciar",
                         html: <p>Ten en cuenta las siguientes recomendaciones: <br/><br/>
                             1.) Recuerda cargar la maquina y mientras la cadena de entrada este vacia o sea    incorrecta, no puedes iniciar. <br/><br/>
@@ -239,8 +185,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                             icon: "warning"
                         });
                     }
-                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
-                        //alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {                        
                         MySwal.fire({
                             title: "Opps....",
                             html: "Si notas que la cinta ahora solo tiene 'a', debes cargar la maquina de nuevo. ",
@@ -248,8 +193,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                        });
 
                     }
-                    if(document.getElementById("iniciar").classList.contains("corriendo")){
-                        //alert("La simulacion esta corriendo no seas mamooon, deja que termine")
+                    if(document.getElementById("iniciar").classList.contains("corriendo")){                     
                         MySwal.fire({
                             title: "Opps....",
                             html: "La simulacion esta corriendo, deja que termine. ",
@@ -260,7 +204,6 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             }
             else{
                 if(recorrido.length === 0){
-                    //alert("No has cargado la maquina no puedes iniciar el proceso")
                     MySwal.fire({
                         title: "Opps....",
                         html: "No has cargado la maquina no puedes iniciar el proceso. ",
@@ -269,30 +212,19 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 }
                 else{
                     console.log("iniciar:> ",recorrido);
-
                     //obteniendo velocidad
                     console.log(velocidad);
                     let rapidez = obtenerVelocidad(velocidad)
-
                     //desactiva cuando se le da click he inicia el proceso
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("iniciar").classList.add("corriendo");
-
                     //desactivando botones de toggle y cargar
                     document.getElementById("cargar").classList.add("desactivado");
                     document.getElementById("palanca").classList.add("desactivado");
-
                     var i = 0;
-                    var network = red();
-
-                    // console.log("cadena parcial",cadenaParcial);
-                    
-                    var idInterval = setInterval(()=>{
-                        
-                        // let vec = cadenaParcial;
-                        //   console.log("dentro del interval");
+                    var network = red();                    
+                    var idInterval = setInterval(()=>{                        
                         if(i < recorrido.length){
-                            // console.log("dentro del if");
                             //resaltando estado
                             network.setSelection({nodes:recorrido[i].resalta.nodo, edges:recorrido[i].resalta.enlace});
                             setTimeout(()=>{
@@ -300,30 +232,18 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                             },rapidez-100)
 
                             //cambiando lo que hay en el vector
-                            let parcial = construirNuevoVector(recorrido[i].indice,recorrido[i].reemplazaPor,cadenaAMontar);
-                            // for (let x = 0; x < vec.length; x++) {
-                            //     if(x === recorrido[i].indice){
-                            //         vec[x] = recorrido[i].reemplazaPor
-                            //     }
-                            // }
-                            
+                            let parcial = construirNuevoVector(recorrido[i].indice,recorrido[i].reemplazaPor,cadenaAMontar);                            
                             console.log("cadenaParcial => ",parcial);
-                            // setCadenaParcial(parcial);
                             establecerCadenaEnLaCinta(convertirEnVectorAux(parcial.join('')));
-                            // console.log("vectorParcial => ",vec);
-                            // console.log("cadenaCinta   => ",cadenaAMontar);
                             console.log("intervalo     => ",i);
-
                             //muevete
                             document.getElementById(recorrido[i].clickEn).click();    
-
                             i++;
                         }
                         else{
-                            // document.getElementById("iniciar").classList.remove("desactivado");
+                            
                             document.getElementById("iniciar").classList.remove("corriendo");
                             document.getElementById("cargar").classList.remove("cargado");
-
                             //activando nuevamente botones cargar y toggle
                             if(regex.test(document.getElementById("entrada").value)){
                                 document.getElementById("cargar").classList.remove("desactivado");
@@ -332,14 +252,12 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
 
                             //cuando termine queda en el ultimo estado
                             network.setSelection({nodes:[3]})
-                            //alert("Proceso finalizaado")
                             MySwal.fire({
                                 title: "Finalizado",
                                 text: "Proceso terminado con exito.",
                                 icon: "success"
                             });
-                            //para quitar el boton reiniciar que se haga automatico
-                            // establecerCadenaEnLaCinta(convertirEnVector(cadena));
+
                             clearInterval(idInterval);
                         }
                     },rapidez);
@@ -347,50 +265,11 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
             }
         }
 
-        // if(e.target.id.includes("pausar")){
-        //     console.log("Clickaste => ","pausar");
-        //     if(document.getElementById("pausar").classList.contains("desactivado") && !document.getElementById("cargar").classList.contains("cargada")){
-        //         //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes pausar\nRecuerda cargar la maquina");
-        //         MySwal.fire({
-        //             title: "Error al pausar",
-        //             html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
-        //             footer: "ERROR",
-        //             icon: 'error',
-        //         });
-        //         //falta validar mas
-        //     }
-        // }
 
-        // if(e.target.id.includes("reIniciar")){
-        //     console.log("Clickaste => ","reiniciar");
-        //     if(document.getElementById("reIniciar").classList.contains("desactivado")){
-        //         //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes reiniciar\nRecuerda cargar la maquina");
-                
-        //         if(document.getElementById("cargar").classList.contains("desactivado")){    
-        //             MySwal.fire({
-        //                 title: "Error al Reinicar",
-        //                 html: <p>Mientras la cadena de entrada este vacia o sea incorrecta,<br></br>Recuerda cargar la maquina</p>,
-        //                 footer: "ERROR",
-        //                 icon: 'error'
-        //             });
-        //         }
-        //         //falta validar mas
-        //     }
-        //     else{
-        //         //jajajajaja
-        //         document.getElementById("reIniciar").classList.add("puedeReiniciar");
-        //         document.getElementById("iniciar").click();
-        //         // setTimeout(()=>{
-        //         //     document.getElementById("reIniciar").classList.remove("puedeReiniciar");   
-        //         // },2000);
-        //     }
-        // }
 
         if(e.target.id.includes("siguiente")){
             console.log("Clickaste => ","siguiente");
-            if(document.getElementById("siguiente").classList.contains("desactivado")){
-                //alert("Mientras la cadena de entrada este vacia o sea incorrecta, no puedes seguir el proceso por pasos\nRecuerda cargar la maquina");
-                
+            if(document.getElementById("siguiente").classList.contains("desactivado")){                               
                 if(document.getElementById("cargar").classList.contains("desactivado")){   
                     MySwal.fire({
                         title: "Error",
@@ -401,15 +280,13 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                 }
                 else{
                     if(!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length === 0)){
-                        //alert("oye por favor carga la maquina")
                         MySwal.fire({
                             title: "Opps...",
                             html: "Oye debes cargar la maquina",
                             icon: "warning"
                         });
                     }
-                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {
-                       // alert("si notas que la cinta ahora solo tiene 'a', debes cargar de nuevo")
+                    if (!document.getElementById("cargar").classList.contains("cargado") && (cadenaAMontar.length !== 0)) {                       
                        MySwal.fire({
                             title: "Opps....",
                             html: "si notas que la cinta ahora solo tiene 'a', debes cargar la maquina de nuevo ",
@@ -420,8 +297,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
 
             }
             else{
-                if(recorrido.length === 0){
-                    //alert("No puedes iniciar el paso a paso sin antes cargar la maquina");
+                if(recorrido.length === 0){                    
                     MySwal.fire({
                         title: "Opps....",
                         text: "No puedes inicar el paso a paso sin antes cargar la maquina.",
@@ -438,7 +314,6 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                                         
                     var network = red();
                     if(j < recorrido.length){
-                        // console.log("dentro del if");
                         //resaltando estado
                         network.setSelection({nodes:recorrido[j].resalta.nodo, edges:recorrido[j].resalta.enlace});
                         setTimeout(()=>{
@@ -449,21 +324,10 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         },500)
 
                         //cambiando lo que hay en el vector
-                        let parcial = construirNuevoVector(recorrido[j].indice,recorrido[j].reemplazaPor,cadenaAMontar);
-                        // for (let x = 0; x < vec.length; x++) {
-                        //     if(x === recorrido[i].indice){
-                        //         vec[x] = recorrido[i].reemplazaPor
-                        //     }
-                        // }
-                        
-                        console.log("cadenaParcial => ",parcial);
-                        // setCadenaParcial(parcial);
+                        let parcial = construirNuevoVector(recorrido[j].indice,recorrido[j].reemplazaPor,cadenaAMontar);                        
+                        console.log("cadenaParcial => ",parcial);                        
                         establecerCadenaEnLaCinta(convertirEnVectorAux(parcial.join('')));
-                        // console.log("vectorParcial => ",vec);
-                        // console.log("cadenaCinta   => ",cadenaAMontar);
                         console.log("intervalo     => ",j);
-
-
                         //muevete
                         document.getElementById(recorrido[j].clickEn).click();
 
@@ -480,7 +344,6 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         document.getElementById("palanca").classList.remove("desactivado");
 
                         //aqui termina el recorrido ps
-                        //alert("aqui termina el recorrido paso a paso");
                         MySwal.fire({
                             title: "Finalizado",
                             text: "Proceso terminado con exito.",

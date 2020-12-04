@@ -27,21 +27,6 @@ const Diagramas = ({ cadenaMontar }) => {
       // glide.disable(); //suspende interaccion
       glide.mount();
 
-      // var x = 0;
-      // var idInterval = setInterval(()=>{
-      //   if(x < 3){
-      //     document.getElementById("btn__next").click();
-      //     x++;
-      //   }
-      //   else if(x >= 3 && x <= 6){
-      //     document.getElementById("btn__prev").click();
-      //     x++
-      //   }
-      //   else{
-      //     clearInterval(idInterval);
-      //   }
-      // },1000);
-
     },[])
 
     //ejemplo del grafo
@@ -51,21 +36,6 @@ const Diagramas = ({ cadenaMontar }) => {
         //crea el grafo
         crearRed(contenedor_grafo.current);
 
-        // const grafo = red();
-        
-        // var x=0;
-        // function iniciar(){
-        //     if(x < 12){
-        //         ejecutaEsto(x+1,grafo);
-        //         x++;
-        //     }
-        //     else{
-        //         console.log("ya limite > 12");
-        //         clearInterval(idInterval)
-        //     }
-        // }
-
-        // var idInterval = setInterval(iniciar,500);
       
     },[])
 
@@ -134,61 +104,3 @@ const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps,mapDispatchToProps)(Diagramas);
 
-
-//pruebas
-// function ejecutaEsto(p,network){
-    //     switch(p){
-    //       case 1:
-    //         network.setSelection({nodes:[1],edges:[11]})
-    //         break;
-
-    //       case 2:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-          
-    //       case 3:
-    //         network.setSelection({nodes:[1],edges:[11]})  
-    //         // network.unselectAll();
-    //         break;
-          
-    //       case 4:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-          
-    //       case 5:
-    //         network.setSelection({nodes:[2],edges:[12]})  
-    //         // network.unselectAll();
-    //         break;
-          
-    //       case 6:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 7:
-    //         network.setSelection({nodes:[3], edges:[23]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 8:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 9:
-    //         network.setSelection({nodes:[3], edges:[33]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 10:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 11:
-    //         network.setSelection({nodes:[4], edges:[34]})  
-    //         // network.unselectAll();
-    //         break;
-    //       case 12:
-    //         network.setSelection({nodes:[5]})  
-    //         // network.unselectAll();
-    //         break;
-    //     }  
-    //   }

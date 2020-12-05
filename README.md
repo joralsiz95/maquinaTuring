@@ -1,6 +1,6 @@
 ## Maquina de Turing
 
-AppWeb que implementa el modelo de Turing para validar entradas a un programa escrito con JavaScript, utilizando React js.
+AppWeb que implementa el modelo de Turing, la cual cambia una cadena con combinaciones bes y aes a una cadena final que solo contiene aes, también podemos observar las transiciones que se llevan a cabo en el grafo y en la cinta, para logar el cambio de bes por aes. Este programa está escrito en JavaScript, utilizando React js.
 
 ## Landing page del proyecto:
 
@@ -15,7 +15,7 @@ AppWeb que implementa el modelo de Turing para validar entradas a un programa es
 ![automatica](https://github.com/joralsiz95/maquinaTuring/blob/main/src/imagenes/screen3.png?raw=true)
 
 ## Link Pagina web
- * 
+ * https://joralsiz95.github.io/maquinaTuring/
  
 ## Creado por:
  * Sebastian Troncoso Correa

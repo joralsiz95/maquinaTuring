@@ -128,7 +128,7 @@ export const cadenaProcesada = (array) => {
 }
 
 export const obtenerVelocidad = (porcentaje) => {
-    
+    console.log("Que ha pasado: ",porcentaje);
     let relaciones = [
         {
             porcentaje: 100,
@@ -178,7 +178,7 @@ export const obtenerVelocidad = (porcentaje) => {
 
     let retorno = 300;
     for (let i = 0; i < relaciones.length; i++) {
-        if(relaciones[i].porcentaje === porcentaje){
+        if(relaciones[i].porcentaje == porcentaje){
             retorno = relaciones[i].velocidad;
         }
     }

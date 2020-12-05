@@ -214,7 +214,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                     console.log("iniciar:> ",recorrido);
                     //obteniendo velocidad
                     console.log(velocidad);
-                    let rapidez = obtenerVelocidad(velocidad)
+                    let rapidez = obtenerVelocidad(velocidad);
                     //desactiva cuando se le da click he inicia el proceso
                     document.getElementById("iniciar").classList.add("desactivado");
                     document.getElementById("iniciar").classList.add("corriendo");

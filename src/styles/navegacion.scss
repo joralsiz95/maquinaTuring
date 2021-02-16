@@ -156,3 +156,48 @@
     }
 
 }
+
+@media (max-width: 768px){
+
+    .navegacion{
+        // height: 23vh;
+        // justify-content: space-around;
+
+        &__izquierda{
+            width: 40%;
+            // margin-left: 20px;
+
+            img{
+                height: 50px;
+                width: 50px;
+                // margin-right: 10px;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            h2{
+                font-size: 1.2em;
+                border-bottom: 2px dotted $segundario;
+            }
+
+        }
+
+        &__derecha{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // border: 2px solid red;
+            width: 60%;
+            // background-color: yellow;
+
+            h2{
+                // display: none;
+                font-size: 1.2em;
+            }
+
+
+        }
+
+    }
+
+}

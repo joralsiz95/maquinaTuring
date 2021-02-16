@@ -46,3 +46,20 @@
     }
 
 }
+
+@media (max-width: 768px){
+
+    .contenedor{
+
+        &__izquierda{
+            margin: 0 auto;
+
+            h3{
+                font-size: 1.1rem;
+            }
+
+        }
+
+    }
+
+}

@@ -9,7 +9,7 @@ const MySwal = withReactContent(Swal);
 const Navegacion = () => {
 
     const handleClick = e => {
-        
+
         if(e.target.id.includes("instrucciones")){
         
             MySwal.fire({

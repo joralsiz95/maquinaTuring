@@ -389,7 +389,7 @@ const Settings = ({ cadenaAMontar,  recorrido, establecerCadenaEnLaCinta, establ
                         <p id="value_deslizable" className="value_deslizable">{velocidad}%</p>
                     </div>
                     <div className="contenedor__botones">
-                        <a id="iniciar" name="iniciar" onClick={handleClick} className="iniciar desactivado">
+                        <a href="#title_red" id="iniciar" name="iniciar" onClick={handleClick} className="iniciar desactivado">
                             <p id="t_iniciar" >Iniciar</p>
                             <img id="i_iniciar" src="https://img.icons8.com/ios-filled/50/000000/chevron-right.png"/>
                         </a>

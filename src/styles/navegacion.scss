@@ -61,7 +61,7 @@
                     transform: scale(1.03);
                     transition: .2s ease;
                 }
-                
+
                 &:active{
                     background-color: rgba($color: $segundario, $alpha: .5);
                     color: white;
@@ -70,6 +70,87 @@
                 }
 
             }
+        }
+
+    }
+
+}
+
+
+@media (max-width: 400px){
+
+    .navegacion{
+        // height: 23vh;
+        justify-content: space-around;
+
+        &__izquierda{
+            width: 40%;
+            // margin-left: 20px;
+
+            img{
+                height: 40px;
+                width: 40px;
+                // margin-right: 10px;
+                background-color: white;
+                border-radius: 50%;
+            }
+
+            h2{
+                font-size: 1.2em;
+                border-bottom: 2px dotted $segundario;
+            }
+
+        }
+
+        &__derecha{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // border: 2px solid red;
+            width: 50%;
+            // background-color: yellow;
+
+            h2{
+                display: none;
+            }
+
+            a{
+                // @include botones();
+                // background-color: yellow;
+                p{
+                    font-size: .6em;
+                    color: white;
+                }
+                img{
+                    position: relative;
+                    top: -2px;
+                    left: 3px;
+                    height: 30px;
+                    width: 30px;
+                    background-color: $principal;
+                    border-radius: 3px;
+                    margin-left: 5px;
+                }
+                &.instrucciones{
+
+                    background-color: $segundario;
+                    width: 48%;
+
+                    &:hover{
+                        transform: scale(1.03);
+                        transition: .2s ease;
+                    }
+
+                    &:active{
+                        background-color: rgba($color: $segundario, $alpha: .5);
+                        color: white;
+                        transform: scale(1);
+                        transition: .2s ease;
+                    }
+
+                }
+            }
+
         }
 
     }

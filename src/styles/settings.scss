@@ -14,19 +14,19 @@
         cursor: no-drop;
         background-color: rgb(180, 180, 180);
         color: rgb(12, 12, 12);
-        
+
         &:hover{
             transform: scale(1);
             transition: .2s ease;
         }
-        
+
         &:active{
             background-color: rgb(180, 180, 180);
             color: rgb(12, 12, 12);
             transform: scale(1);
             transition: .2s ease;
         }
-    
+
     }
 }
 
@@ -37,9 +37,9 @@ form{
     border-radius: 5px;
     height: 89%;
     width: 70%;
+    padding: 30px 50px;
     margin: 0 auto;
     border-top: 4px solid $principal;
-    padding: 30px 50px;
 
     p{
         font-size: 1.3rem;
@@ -361,6 +361,17 @@ form{
             @include botonDesactivado();
         
         }       
+
+    }
+
+}
+
+
+@media (max-width: 400px){
+
+    form{
+        width: 90%;
+        padding: 30px 20px;
 
     }
 

@@ -16,7 +16,7 @@ const Diagramas = ({ cadenaMontar }) => {
       var glide = new Glide('.glide',{
         type: "slider",
         startAt: 10,
-        perView: 11,
+        perView: 9,
         focusAt: "center",
         gap: 5,
         // animationTimingFunc: "bounce",
@@ -44,7 +44,7 @@ const Diagramas = ({ cadenaMontar }) => {
       console.log("Effect diagramas => ",cadenaMontar);
     },[cadenaMontar])
 
-    const mostrarElementosEnLaCinta = () => { 
+    const mostrarElementosEnLaCinta = () => {
 
       if(cadenaMontar.length === 0){
         return vector.map((elem,i)=>(
@@ -71,8 +71,7 @@ const Diagramas = ({ cadenaMontar }) => {
             {/* Contenedor del grafo */}
             <div className="wrapper__grafo">
                 <div id="red" ref={contenedor_grafo}></div>
-            </div> 
-            
+            </div>
             {/* Contenedor de la cinta */}
             <div className="glide">
                 <h3>Representación de la cinta</h3>

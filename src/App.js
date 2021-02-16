@@ -44,7 +44,6 @@ function App() {
   return (
         <Provider store={store} >
           <main>
-
             <Navegacion/>
             <Cuerpo/>
             <Footer/>

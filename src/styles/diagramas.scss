@@ -7,17 +7,16 @@
     #red{
         background-color: white;
         border: 1px solid rgb(163, 163, 163);
-        width: 99%;
+        width: 100%;
         margin: 0 auto;
         height: 400px;
         box-shadow: 0px 5px 5px -2px $segundario;
         border-radius: 3px;
-        border-top: 4px solid $principal;        
-        
+        border-top: 4px solid $principal;
         .vis-network{
             outline: none;
         }
-    
+
     }
 
 }
@@ -26,6 +25,7 @@
     // border: 1px solid blue;
     cursor: auto;
     margin-top: 30px;
+    width: 100%;
     .glide__track{
         border: 1px solid rgb(163, 163, 163);
         margin: 10px 0;
@@ -40,7 +40,7 @@
             position: relative;
             border: 1.8px solid $segundario;
             height: 50px;
-            margin: 5px 0;    
+            margin: 5px 0;
             // width: 50px;
             display: flex;
             text-align: center;

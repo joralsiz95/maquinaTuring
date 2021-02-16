@@ -1,12 +1,14 @@
 .footer{
     /* height: 250px; */
+    width: 100%;
     background-color: $segundario;
     box-shadow: 0px -3px 5px 0px #252a34;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     font-size: 1rem;
-    
+
     &__left{
-        width: 50%;
+        // width: 50%;
         /* border-right: 1px solid white; */
         padding: 10px 30px ;
         color: white;
@@ -23,39 +25,68 @@
         }
 
     }
-    
+
     &__right{
-        width: 50%;
+        // width: 50%;
         color: white;
         padding: 50px 40px 40px 40px;
         display: flex;
-       
+
         &__autores{
             width: 50%;
-            
+
             & h3{
                 border-bottom: 2px dotted $principal;
                 line-height: 30px;
                 width: 89px;
             }
-            
+
             & p{
                 padding: 8px 0;
             }
 
         }
-        
+
         &__profesor{
             width: 50%;
-        
+
             & h3{
                 border-bottom: 2px dotted $principal;
                 line-height: 30px;
                 width: 75px
             }
-            
+
             & p{
                 padding: 8px 0;
+            }
+
+        }
+
+    }
+
+}
+
+
+@media (max-width: 400px){
+
+    .footer{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        font-size: .7em;
+
+        &__right{
+            padding: 0 20px;
+
+            &__autores{
+                padding: 10px;
+                width: 50%;
+                // border: 1px solid blue;
+            }
+
+            &__profesor{
+                padding: 10px;
+                width: 50%;
+                // border: 1px solid red;
             }
 
         }

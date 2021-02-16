@@ -19,7 +19,7 @@ $segundario: #191c22;
     margin: 0 10px;
     border-radius: 5px;
     box-shadow: 0px 4px 5px -1px rgba(0,0,0,0.75);
-    cursor: pointer;        
+    cursor: pointer;
     z-index: 100;
     p{
         font-size: .8rem;
@@ -28,7 +28,7 @@ $segundario: #191c22;
         transition: .2s ease;
         // text-align: left;
     }
-    
+
     img{
         position: relative;
         top: -2px;
@@ -41,6 +41,7 @@ $segundario: #191c22;
 body{
     font-family: 'Josefin Sans', sans-serif;
     background-color: rgb(240, 240, 240);
+    // background-color: red;
     margin: 0;
     padding: 0;
 }
@@ -59,3 +60,13 @@ span{
 
 @import 'diagramas';
 @import 'settings';
+
+
+
+@media (max-width: 1000px){
+
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+}

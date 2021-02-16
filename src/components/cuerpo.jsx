@@ -2,20 +2,18 @@ import React from 'react';
 import Diagramas from '../components/diagramas';
 import Settings from '../components/settings';
 
-const Cuerpo = () => {  
+const Cuerpo = () => {
 
     return(
-        <div className="wrap">
             <div className="contenedor">
                 <div className="contenedor__izquierda">
-                    <h3>Representación del autómata</h3>
+                    <h3 id="title_red">Representación del autómata</h3>
                     <Diagramas/>
                 </div>
                 <div className="contenedor__derecha">
                     <Settings/>
                 </div>
             </div>
-        </div>
     );
 }
 

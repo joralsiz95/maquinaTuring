@@ -15,7 +15,7 @@ AppWeb que implementa el modelo de Turing, la cual cambia una cadena con combina
 ![automatica](https://github.com/joralsiz95/maquinaTuring/blob/main/src/imagenes/screen3.png?raw=true)
 
 ## Link Pagina web
- * https://joralsiz95.github.io/maquinaTuring/
+ * https://simulador-maquinadeturing.web.app/
  
 ## Creado por:
  * Sebastian Troncoso Correa
